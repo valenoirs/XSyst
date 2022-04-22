@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const Penyakit = mongoose.model('Penyakit', new mongoose.Schema({
+const Gejala = mongoose.model('Gejala', new mongoose.Schema({
     kode: {type:String, required:true, unique:true},
     keterangan: {type:String, required:true},
 }))
 
-module.exports = Penyakit;
+module.exports = Gejala;
