@@ -5,7 +5,7 @@ const hashPassword = require('../utils/hashPassword')
 
 const User = require('../models/user');
 
-exports.Login = async (req, res, next) => {
+module.exports.Login = async (req, res, next) => {
     try {
         // Find user
         const user = await User.findOne({email: req.body.email});
@@ -40,3 +40,48 @@ exports.Login = async (req, res, next) => {
         return res.redirect('/login');
     }
 };
+
+exports.Register = async (req, res, next) => {
+    try {
+        const user = await User.findOne({email: req.body.email});
+        
+        if(user){
+            console.log('User with same email found!');
+            req.flash('error', 'Email telah terdaftar!');
+            return res.redirect('/register');
+        }
+
+        // if(req.body.password.length < 8){
+        //     console.log('Password length less than 8 characters!')
+        //     req.flash('error', 'Password terlalu singkat!');
+        //     return res.redirect('/register');
+        // }
+
+        if(req.body.password !== req.body.confirmPassword){
+            console.log('Password validation error!')
+            req.flash('error', 'Konfirmasi password salah!');
+            return res.redirect('/register');
+        }
+
+        const hash = await hashPassword(req.body.password);
+
+        delete req.body.confirmPassword;
+
+        req.body.id = uuidv4();
+        req.body.password = hash;
+
+        const newUser = new User(req.body);
+        await newUser.save();
+
+        console.log(newUser);
+        console.log('User added!');
+
+        return res.redirect('/login');
+
+    }
+    catch (error) {
+        console.error('register-error', error);
+        req.session.error = "Register Error";
+        return res.redirect('/register');
+    }
+}
