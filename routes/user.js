@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+const userController = require('../controllers/user')
+
+// POST
+router.post('/login', userController.Login);
+
+// GET
 router.get('/login', (req, res) => {
     res.render('user/login', {layout: 'layouts/user', title: 'Login'})
 })
