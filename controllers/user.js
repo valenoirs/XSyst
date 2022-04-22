@@ -28,7 +28,7 @@ module.exports.Login = async (req, res, next) => {
         }
 
         // Success
-        req.session.idUser = user.idUser;
+        req.session.idUser = user.id;
         req.session.namaUser = user.nama;
 
         console.log('Logged in!');

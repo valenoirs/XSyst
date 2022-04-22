@@ -17,8 +17,20 @@ router.get('/register', (req, res) => {
     res.render('user/register', {layout: 'layouts/user', title: 'Register'})
 })
 
+router.get('/diagnosa', (req, res) => {
+    res.render('user/diagnosa', {layout: 'layouts/user', title: 'Register'})
+})
+
+router.get('/riwayat', (req, res) => {
+    res.render('user/riwayat', {layout: 'layouts/user', title: 'Register'})
+})
+
+router.get('/informasi', (req, res) => {
+    res.render('user/informasi', {layout: 'layouts/user', title: 'Register'})
+})
+
 router.get('/', (req, res) => {
-    res.send('Halaman Utama User')
+    res.render('user/index', {layout: 'layouts/user', title: 'Home'})
 })
 
 module.exports = router;
