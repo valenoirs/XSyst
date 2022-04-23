@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node app",
+    "test": "",
     "dev": "nodemon app"
   },
   "keywords": [],
-  "author": "aaaaaaa",
+  "author": "valenoirs",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
