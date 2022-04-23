@@ -5,7 +5,7 @@ const hashPassword = require('../utils/hashPassword')
 
 const User = require('../models/user');
 
-module.exports.Login = async (req, res, next) => {
+module.exports.login = async (req, res) => {
     try {
         // Find user
         const user = await User.findOne({email: req.body.email});
@@ -41,7 +41,7 @@ module.exports.Login = async (req, res, next) => {
     }
 };
 
-exports.Register = async (req, res, next) => {
+exports.register = async (req, res) => {
     try {
         const user = await User.findOne({email: req.body.email});
         
@@ -84,4 +84,9 @@ exports.Register = async (req, res, next) => {
         req.session.error = "Register Error";
         return res.redirect('/register');
     }
+}
+
+exports.diagnosa = async (req, res) => {
+    console.log(req.body)
+    return res.redirect('back')
 }

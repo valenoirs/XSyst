@@ -7,10 +7,10 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const cors = require('cors');
 
-const app = express()
-const port = process.env.PORT || 3000
-
 require('dotenv').config();
+
+const app = express()
+const port = process.env.PORT || 5000
 
 // Middleware
 app.use(cors())
@@ -49,8 +49,6 @@ app.use(methodOverride('_method'));
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
-
-app.use(express.static('public'));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
