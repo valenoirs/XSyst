@@ -3,7 +3,9 @@ const {v4: uuidv4} = require('uuid')
 const comparePassword = require('../utils/comparePassword')
 const hashPassword = require('../utils/hashPassword')
 
-const User = require('../models/user');
+const User = require('../models/user')
+const Penyakit = require('../models/penyakit')
+const Gejala = require('../models/gejala')
 
 module.exports.login = async (req, res) => {
     try {
@@ -87,25 +89,31 @@ exports.register = async (req, res) => {
 }
 
 exports.diagnosa = async (req, res) => {
-    console.log(req.body)
+    try{
+        const gejala = Object.values(req.body)
+        const semuaPenyakit = await Penyakit.find()
 
-    const gejala = Object.values(req.body)
-    console.log(gejala)
+        if(req.body.length === 0){
+            console.error('diagnosa-error', error)
+            req.flash('error', 'Pengguna harus memilih gejala!');
+            return res.redirect('/register');            
+        }
 
-    const penyakit = ['G01', 'G02', 'G05'];
+        for (let key in semuaPenyakit){
+            if(gejala.join('') === semuaPenyakit[key].gejala.join('')){
+                console.log(`Sakit = ${semuaPenyakit[key].nama}`)
+                return res.redirect('back')
+            }
+            else{
+                console.log('Sakit = Tidak Diketahui')
+            }
+        }
 
-    var sakit = gejala.every((e) => {
-        return penyakit.includes(e);
-    });
-
-    console.log(sakit)
-    
-    if(sakit){
-        console.log(`Berdasarkan penelusuran yang dilakukan oleh sistem menggunakan pendekatan Forward Chaining. Anda mengalami penyakit mata-mata dengan gejala ${gejala.join(' ')}`)
+        return res.redirect('back')
     }
-    else{
-        console.log('Berdasarkan penelusuran yang dilakukan oleh sistem menggunakan pendekatan Forward Chaining. Sistem pakar tidak mendeteksi adanya kelainan pada mata anda')
+    catch (error){
+        console.error('diagnosa-error', error);
+        req.session.error = "Diagnosa Error";
+        return res.redirect('/diagnosa');
     }
-
-    return res.redirect('back')
 }
