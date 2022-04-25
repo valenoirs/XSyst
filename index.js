@@ -8,7 +8,8 @@ const flash = require('connect-flash');
 const cors = require('cors');
 
 // Local module
-const penyakitController = require('./controllers/penyakit');
+const penyakitController = require('./controllers/penyakit')
+const gejalaController = require('./controllers/gejala')
 
 require('dotenv').config();
 
@@ -57,6 +58,7 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     penyakitController.penyakitAdd()
+    gejalaController.gejalaAdd()
     console.log(`Successfuly connected to MongoDB Atlass`)
 })
 .catch((error) => console.log(error));
