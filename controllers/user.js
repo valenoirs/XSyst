@@ -88,5 +88,24 @@ exports.register = async (req, res) => {
 
 exports.diagnosa = async (req, res) => {
     console.log(req.body)
+
+    const gejala = Object.values(req.body)
+    console.log(gejala)
+
+    const penyakit = ['G01', 'G02', 'G05'];
+
+    var sakit = gejala.every((e) => {
+        return penyakit.includes(e);
+    });
+
+    console.log(sakit)
+    
+    if(sakit){
+        console.log(`Berdasarkan penelusuran yang dilakukan oleh sistem menggunakan pendekatan Forward Chaining. Anda mengalami penyakit mata-mata dengan gejala ${gejala.join(' ')}`)
+    }
+    else{
+        console.log('Berdasarkan penelusuran yang dilakukan oleh sistem menggunakan pendekatan Forward Chaining. Sistem pakar tidak mendeteksi adanya kelainan pada mata anda')
+    }
+
     return res.redirect('back')
 }

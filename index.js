@@ -7,6 +7,9 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const cors = require('cors');
 
+// Local module
+const penyakitController = require('./controllers/penyakit');
+
 require('dotenv').config();
 
 const app = express()
@@ -52,8 +55,13 @@ app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log(`Successfuly connected to MongoDB Atlass`))
+.then(() => {
+    penyakitController.penyakitAdd()
+    console.log(`Successfuly connected to MongoDB Atlass`)
+})
 .catch((error) => console.log(error));
+
+
 
 // HTTP Routes
 app.use('/', require('./routes/user'));
