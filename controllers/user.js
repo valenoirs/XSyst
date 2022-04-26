@@ -33,7 +33,6 @@ module.exports.login = async (req, res) => {
 
         // Success
         req.session.idUser = user.id;
-        req.session.namaUser = user.nama;
 
         console.log('Logged in!');
         return res.redirect('/');
@@ -103,18 +102,19 @@ exports.diagnosa = async (req, res) => {
         }
 
         for (let key in penyakit){
-            if(gejala.join('') === penyakit[key].gejala.join('')){
+            if(gejala.join('') === penyakit[key].rules.join('')){
                 console.log(`Sakit = ${penyakit[key].nama}`)
                 for(let key in solusi){
-                    if(gejala.join('') === solusi[key].gejala.join('')){
+                    if(gejala.join('') === solusi[key].rules.join('')){
                         console.log(`Solusi = ${solusi[key].keterangan}`)
 
                         const newRiwayat = new Riwayat({
                             idRiwayat: uuidv4(),
-                            idUser: uuidv4(),
+                            idUser: req.session.idUser,
                             penyakit: penyakit[key].nama,
                             solusi: solusi[key].keterangan,
-                            gejala: gejala
+                            gejala: penyakit[key].gejala,
+                            pencegahan: penyakit[key].pencegahan
                         })
 
                         await newRiwayat.save()

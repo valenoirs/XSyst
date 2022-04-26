@@ -6,6 +6,7 @@ const Riwayat = mongoose.model('Riwayat', new mongoose.Schema({
     penyakit: {type:String, required:true},
     solusi: {type:String, required:true},
     gejala: {type:Array, required:true, default: []},
+    pencegahan: {type:Array, required:true, default: []},
 }))
 
 module.exports = Riwayat;

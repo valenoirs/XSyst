@@ -1,1 +1,20 @@
 Halaman Riwayat
+<br><br>
+Riwayat :
+<br>
+<% riwayat.forEach((e,i) => { %>
+    <br>
+    <br> <%= i + 1 %> 
+    <br><br> Penyakit = <%= e.penyakit %>
+    <br><br> Solusi = <%= e.solusi %>
+    <br><br>
+    Gejala
+    <% e.gejala.forEach((e, i) => { %>
+        <br> <%= i + 1 %>. <%= e %>
+    <% }) %>
+    <br><br>
+    Pencegahan
+    <% e.pencegahan.forEach((e, i) => { %>
+        <br> <%= i + 1 %>. <%= e %>
+    <% }) %>
+<% }) %>
