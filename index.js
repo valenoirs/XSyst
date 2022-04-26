@@ -10,6 +10,7 @@ const cors = require('cors');
 // Local module
 const penyakitController = require('./controllers/penyakit')
 const gejalaController = require('./controllers/gejala')
+const solusiController = require('./controllers/solusi')
 
 require('dotenv').config();
 
@@ -59,11 +60,10 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     penyakitController.penyakitAdd()
     gejalaController.gejalaAdd()
+    solusiController.solusiAdd()
     console.log(`Successfuly connected to MongoDB Atlass`)
 })
 .catch((error) => console.log(error));
-
-
 
 // HTTP Routes
 app.use('/', require('./routes/user'));
