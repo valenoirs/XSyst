@@ -6,6 +6,8 @@ const hashPassword = require('../utils/hashPassword')
 const User = require('../models/user')
 const Penyakit = require('../models/penyakit')
 const Gejala = require('../models/gejala')
+const Solusi = require('../models/solusi')
+const Riwayat = require('../models/riwayat')
 
 module.exports.login = async (req, res) => {
     try {
@@ -91,7 +93,8 @@ exports.register = async (req, res) => {
 exports.diagnosa = async (req, res) => {
     try{
         const gejala = Object.values(req.body)
-        const semuaPenyakit = await Penyakit.find()
+        const penyakit = await Penyakit.find()
+        const solusi = await Solusi.find()
 
         if(req.body.length === 0){
             console.error('diagnosa-error', error)
@@ -99,16 +102,32 @@ exports.diagnosa = async (req, res) => {
             return res.redirect('/register');            
         }
 
-        for (let key in semuaPenyakit){
-            if(gejala.join('') === semuaPenyakit[key].gejala.join('')){
-                console.log(`Sakit = ${semuaPenyakit[key].nama}`)
-                return res.redirect('back')
-            }
-            else{
-                console.log('Sakit = Tidak Diketahui')
+        for (let key in penyakit){
+            if(gejala.join('') === penyakit[key].gejala.join('')){
+                console.log(`Sakit = ${penyakit[key].nama}`)
+                for(let key in solusi){
+                    if(gejala.join('') === solusi[key].gejala.join('')){
+                        console.log(`Solusi = ${solusi[key].keterangan}`)
+
+                        const newRiwayat = new Riwayat({
+                            idRiwayat: uuidv4(),
+                            idUser: uuidv4(),
+                            penyakit: penyakit[key].nama,
+                            solusi: solusi[key].keterangan,
+                            gejala: gejala
+                        })
+
+                        await newRiwayat.save()
+
+                        console.log('Riwayat baru')
+
+                        return res.redirect('/hasil')
+                    }
+                }
             }
         }
 
+        console.log('Sakit = Tidak diketahui')        
         return res.redirect('back')
     }
     catch (error){

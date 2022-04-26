@@ -1,0 +1,13 @@
+halaman hasil
+<br><br>
+Penyakit = <%= riwayat.penyakit %>
+<br><br>
+Solusi = <%= riwayat.solusi %>
+<br><br>
+gejala = <% gejala.forEach((element, i) => { %>
+    <br><%= i + 1 %>. <%= element.keterangan %> 
+<% }) %>
+<br><br>
+pencegahan = <% pencegahan.forEach((element, i) => { %>
+    <br> <%=i + 1 %>. <%= element %>
+<% }) %>

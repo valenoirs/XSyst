@@ -52,52 +52,52 @@ module.exports.gejalaAdd = async (req, res) => {
     },
     {
         id: uuid(),
-        kode: 'G010',
+        kode: 'G10',
         keterangan: 'Rabun pada malam hari',
     },
     {
         id: uuid(),
-        kode: 'G011',
+        kode: 'G11',
         keterangan: 'Penglihatan jauh dan dekat kabur',
     },
     {
         id: uuid(),
-        kode: 'G012',
+        kode: 'G12',
         keterangan: 'Penglihatan tidak jelas, seperti terdapat kabut menghalangi objek.',
     },
     {
         id: uuid(),
-        kode: 'G013',
+        kode: 'G13',
         keterangan: 'Sering mengganti ukuran kacamata.',
     },
     {
         id: uuid(),
-        kode: 'G014',
+        kode: 'G14',
         keterangan: 'Suka melihat pelangi melingkar di lampu atau pusat cahaya',
     },
     {
         id: uuid(),
-        kode: 'G015',
+        kode: 'G15',
         keterangan: 'Penglihatan yang makin menyempit hingga akhirnya tidak dapat melihat obyek sama sekali.',
     },
     {
         id: uuid(),
-        kode: 'G016',
+        kode: 'G16',
         keterangan: 'Merasa mual dan muntah',
     },
     {
         id: uuid(),
-        kode: 'G017',
+        kode: 'G17',
         keterangan: 'Hilangnya fungsi penglihatan pada salah satu mata',
     },
     {
         id: uuid(),
-        kode: 'G018',
+        kode: 'G18',
         keterangan: 'Terlihat bentuk-bentuk iregular yang melayang-layang atau kilatan cahaya',
     },
     {
         id: uuid(),
-        kode: 'G019',
+        kode: 'G19',
         keterangan: 'Mata terasa gatal dan berair',
     },
     {
