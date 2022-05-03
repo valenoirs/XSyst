@@ -14,6 +14,8 @@ router.post('/register', userController.register);
 
 router.post('/diagnosa', userController.diagnosa);
 
+router.post('/recovery', userController.recovery);
+
 // GET
 router.get('/login', (req, res) => {
     if(!req.session.idUser){
@@ -62,17 +64,35 @@ router.get('/informasi', (req, res) => {
     }
 })
 
-router.get('/hasil', async (req, res) => {
+router.get('/recovery', (req, res) => {
     if(!req.session.idUser){
-        res.redirect('/login');
+        res.render('user/recovery', {layout: 'layouts/user', title: 'Password Recovery'})
     }
     else{
-        const semuaRiwayat = await Riwayat.find()
-        const riwayat = semuaRiwayat[semuaRiwayat.length - 1];
-        
-        res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil', riwayat});
+        res.redirect('/login');
     }
 })
+
+router.get('/verification', (req, res) => {
+    if(!req.session.idUser){
+        res.render('user/verification', {layout: 'layouts/user', title: 'Verification Code'})
+    }
+    else{
+        res.redirect('/login');
+    }
+})
+
+// router.get('/hasil', async (req, res) => {
+//     if(!req.session.idUser){
+//         res.redirect('/login');
+//     }
+//     else{
+//         const semuaRiwayat = await Riwayat.find()
+//         const riwayat = semuaRiwayat[semuaRiwayat.length - 1];
+        
+//         res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil', riwayat});
+//     }
+// })
 
 router.get('/', (req, res) => {
     if(!req.session.idUser){

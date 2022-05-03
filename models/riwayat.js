@@ -7,6 +7,9 @@ const Riwayat = mongoose.model('Riwayat', new mongoose.Schema({
     solusi: {type:String, required:true},
     gejala: {type:Array, required:true, default: []},
     pencegahan: {type:Array, required:true, default: []},
+},
+{
+    timestamps: true
 }))
 
 module.exports = Riwayat;

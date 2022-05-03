@@ -1,13 +1,15 @@
-const {v4: uuidv4} = require('uuid')
+const {v4: uuid} = require('uuid')
 
 const comparePassword = require('../utils/comparePassword')
 const hashPassword = require('../utils/hashPassword')
+const sendEmail = require('../utils/sendEmail')
 
 const User = require('../models/user')
 const Penyakit = require('../models/penyakit')
 const Gejala = require('../models/gejala')
 const Solusi = require('../models/solusi')
 const Riwayat = require('../models/riwayat')
+const Code = require('../models/code')
 
 module.exports.login = async (req, res) => {
     try {
@@ -18,7 +20,6 @@ module.exports.login = async (req, res) => {
         if(!user){
             console.log('User not found!');
             req.flash('error', 'Email tidak ditemukan!');
-            // req.session.error = 'Email salah!';
             return res.redirect('/login');
         }
 
@@ -70,7 +71,7 @@ exports.register = async (req, res) => {
 
         delete req.body.confirmPassword;
 
-        req.body.id = uuidv4();
+        req.body.id = uuid();
         req.body.password = hash;
 
         const newUser = new User(req.body);
@@ -108,20 +109,22 @@ exports.diagnosa = async (req, res) => {
                     if(gejala.join('') === solusi[key].rules.join('')){
                         console.log(`Solusi = ${solusi[key].keterangan}`)
 
-                        const newRiwayat = new Riwayat({
-                            idRiwayat: uuidv4(),
+                        const riwayat = {
+                            idRiwayat: uuid(),
                             idUser: req.session.idUser,
                             penyakit: penyakit[key].nama,
                             solusi: solusi[key].keterangan,
                             gejala: penyakit[key].gejala,
                             pencegahan: penyakit[key].pencegahan
-                        })
+                        }
 
-                        await newRiwayat.save()
+                        if(req.session.idUser){
+                            const newRiwayat = new Riwayat(riwayat)
+                            await newRiwayat.save()
+                            console.log('Riwayat baru')
+                        }
 
-                        console.log('Riwayat baru')
-
-                        return res.redirect('/hasil')
+                        return res.render('user/hasil', {layout: 'layouts/user', riwayat})
                     }
                 }
             }
@@ -135,4 +138,35 @@ exports.diagnosa = async (req, res) => {
         req.session.error = "Diagnosa Error";
         return res.redirect('/diagnosa');
     }
-}
+} // Diagnosa
+
+exports.recovery = async (req, res) => {
+    try{
+        const {email} = req.body
+        const user = await User.find({email})
+
+        if(!user){
+            console.log('User not found!');
+            req.flash('error', 'Email tidak ditemukan!');
+            return res.redirect('back');
+        }
+
+        const code = uuid().toString().replace('-', '').substring(0, 8)
+
+        sendEmail(email, code);
+
+        await Code.create({
+            id: uuid(),
+            email,
+            code
+        })
+
+        console.log('Email sent!')        
+        return res.redirect('/verification')
+    }
+    catch (error){
+        console.error('forget-password-error', error);
+        req.session.error = "Forget Password Error";
+        return res.redirect('back');
+    }
+} // Forget Password
