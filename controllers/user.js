@@ -14,92 +14,93 @@ const Code = require('../models/code')
 module.exports.login = async (req, res) => {
     try {
         // Find user
-        const user = await User.findOne({email: req.body.email});
+        const user = await User.findOne({email: req.body.email})
 
         // User validation
         if(!user){
-            console.log('User not found!');
-            req.flash('error', 'Email tidak ditemukan!');
-            return res.redirect('/login');
+            console.log('User not found!')
+            req.flash('error', 'Email tidak ditemukan!')
+            return res.redirect('/login')
         }
 
         // Password validation
-        passwordValid = comparePassword(req.body.password, user.password);
+        passwordValid = comparePassword(req.body.password, user.password)
 
         if(!passwordValid){
-            console.log('Password invalid!');
-            req.flash('error', 'Password salah!');
-            return res.redirect('/login');
+            console.log('Password invalid!')
+            req.flash('error', 'Password salah!')
+            return res.redirect('/login')
         }
 
         // Success
-        req.session.idUser = user.id;
+        req.session.idUser = user.id
 
-        console.log('Logged in!');
-        return res.redirect('/');
+        console.log('Logged in!')
+        return res.redirect('/')
     }
     catch (error) {
-        console.error('login-error', error);
-        req.flash('error', 'Login Error!');
-        return res.redirect('/login');
+        console.error('login-error', error)
+        req.flash('error', 'Login Error!')
+        return res.redirect('/login')
     }
-};
+} // Login
 
 exports.register = async (req, res) => {
     try {
-        const user = await User.findOne({email: req.body.email});
+        const user = await User.findOne({email: req.body.email})
         
         if(user){
-            console.log('User with same email found!');
-            req.flash('error', 'Email telah terdaftar!');
-            return res.redirect('/register');
+            console.log('User with same email found!')
+            req.flash('error', 'Email telah terdaftar!')
+            return res.redirect('/register')
         }
 
         // if(req.body.password.length < 8){
         //     console.log('Password length less than 8 characters!')
-        //     req.flash('error', 'Password terlalu singkat!');
-        //     return res.redirect('/register');
+        //     req.flash('error', 'Password terlalu singkat!')
+        //     return res.redirect('/register')
         // }
 
         if(req.body.password !== req.body.confirmPassword){
             console.log('Password validation error!')
-            req.flash('error', 'Konfirmasi password salah!');
-            return res.redirect('/register');
+            req.flash('error', 'Konfirmasi password salah!')
+            return res.redirect('/register')
         }
 
-        const hash = await hashPassword(req.body.password);
+        const hash = await hashPassword(req.body.password)
 
-        delete req.body.confirmPassword;
+        delete req.body.confirmPassword
 
-        req.body.id = uuid();
-        req.body.password = hash;
+        req.body.id = uuid()
+        req.body.password = hash
 
-        const newUser = new User(req.body);
-        await newUser.save();
+        const newUser = new User(req.body)
+        await newUser.save()
 
-        console.log(newUser);
-        console.log('User added!');
+        console.log(newUser)
+        console.log('User added!')
 
-        return res.redirect('/login');
+        return res.redirect('/login')
 
     }
     catch (error) {
-        console.error('register-error', error);
-        req.session.error = "Register Error";
-        return res.redirect('/register');
+        console.error('register-error', error)
+        req.session.error = "Register Error"
+        return res.redirect('/register')
     }
-}
+} // Register
 
 exports.diagnosa = async (req, res) => {
     try{
+        console.log(req.body)
         const gejala = Object.values(req.body)
         const penyakit = await Penyakit.find()
         const solusi = await Solusi.find()
 
         if(req.body.length === 0){
             console.error('diagnosa-error', error)
-            req.flash('error', 'Pengguna harus memilih gejala!');
-            return res.redirect('/register');            
+            req.flash('error', 'Pengguna harus memilih gejala!')
+            return res.redirect('/register')            
         }
 
         for (let key in penyakit){
@@ -124,7 +125,7 @@ exports.diagnosa = async (req, res) => {
                             console.log('Riwayat baru')
                         }
 
-                        return res.render('user/hasil', {layout: 'layouts/user', riwayat})
+                        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
                     }
                 }
             }
@@ -134,40 +135,96 @@ exports.diagnosa = async (req, res) => {
         return res.redirect('back')
     }
     catch (error){
-        console.error('diagnosa-error', error);
-        req.session.error = "Diagnosa Error";
-        return res.redirect('/diagnosa');
+        console.error('diagnosa-error', error)
+        req.session.error = "Diagnosa Error"
+        return res.redirect('/diagnosa')
     }
 } // Diagnosa
 
 exports.recovery = async (req, res) => {
     try{
+        console.log(req.body)
         const {email} = req.body
         const user = await User.findOne({email})
         
         if(!user){
-            console.log('User not found!');
-            req.flash('error', 'Email tidak ditemukan!');
-            return res.redirect('back');
+            console.log('User not found!')
+            req.flash('error', 'Email tidak ditemukan!')
+            return res.redirect('back')
         }
 
         const code = uuid().toString().replace('-', '').substring(0, 8)
 
-        sendEmail(email, code);
+        sendEmail(email, code)
 
-        await Code.create({
+        const newCode = new Code({
             id: uuid(),
             email,
             code
         })
+        newCode.save()
 
-        console.log('Email sent!')        
-        return res.redirect('/verification')
+        console.log('Email sent!')
+        return res.render('user/verification', {layout: 'layouts/user', title: 'Verification', email})
+        // return res.redirect('/verification')
     }
     catch (error){
-        console.error('forget-password-error', error);
-        req.session.error = "Forget Password Error";
-        return res.redirect('back');
+        console.error('recovery-error', error)
+        req.session.error = "Recovery Error"
+        return res.redirect('back')
     }
 } // Recovery
 
+exports.verification = async (req, res) => {
+    try{
+        console.log(req.body)
+
+        const {code, email} = req.body
+        const verified = await Code.findOne({code, email})
+
+        if(!verified){
+            console.log('Verification code incorrect!')
+            req.flash('error', 'Code verifikasi salah!')
+            return res.render('user/verification', {layout: 'layouts/user', title: 'Verification', email})
+        }
+        
+        console.log('Verified')
+        return res.render('user/password', {layout: 'layouts/user', title: 'Reset Password', email, code})
+    }
+    catch(error){
+        console.error('verification-error', error)
+        req.session.error = "Verification Error"
+        return res.redirect('back')
+    }
+} // Verification
+
+exports.password = async (req, res) => {
+    try{
+        console.log(req.body)
+        const {email, code, password, confirmPassword} = req.body
+        
+        if(password !== confirmPassword){
+            console.log('Password validation error!')
+            req.flash('error', 'Konfirmasi password salah!')
+            return res.render('user/password', {layout: 'layouts/user', title: 'Reset Password', email, code})
+        }
+
+        const hash = await hashPassword(password)
+
+        await User.updateOne({email}, {
+            $set: {
+                password: hash
+            }
+        });
+
+        await Code.deleteOne({email, code});
+
+        console.log('Password Recovered')
+        return res.redirect('/login')
+    }
+    catch (error){
+        console.error('verification-error', error)
+        req.session.error = "Verification Error"
+        return res.redirect('back')
+    }
+} // Password

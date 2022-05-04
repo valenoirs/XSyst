@@ -1,7 +1,11 @@
 <form action="/verification" method="post" class="mt-5">
     <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" value="<%= email %>" aria-describedby="emailHelp" required readonly>
+    </div>
+    <div class="mb-3">
         <label for="code" class="form-label">Verification Code</label>
-        <input type="text" class="form-control" id="code" name="code">
+        <input type="text" class="form-control" id="code" name="code" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
