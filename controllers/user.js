@@ -143,8 +143,8 @@ exports.diagnosa = async (req, res) => {
 exports.recovery = async (req, res) => {
     try{
         const {email} = req.body
-        const user = await User.find({email})
-
+        const user = await User.findOne({email})
+        
         if(!user){
             console.log('User not found!');
             req.flash('error', 'Email tidak ditemukan!');
@@ -169,4 +169,5 @@ exports.recovery = async (req, res) => {
         req.session.error = "Forget Password Error";
         return res.redirect('back');
     }
-} // Forget Password
+} // Recovery
+
