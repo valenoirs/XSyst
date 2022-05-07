@@ -11,7 +11,20 @@ const Solusi = require('../models/solusi')
 const Riwayat = require('../models/riwayat')
 const Code = require('../models/code')
 
-module.exports.login = async (req, res) => {
+module.exports.logout = async (req, res) => {
+    try{
+        delete req.session.idUser
+
+        console.log('User logged out')
+        return res.redirect('/')
+    }
+    catch (error){
+        console.error('logout-error', error)
+        return res.redirect('/')
+    }
+} // Logout
+
+exports.login = async (req, res) => {
     try {
         // Find user
         const user = await User.findOne({email: req.body.email})
@@ -35,7 +48,7 @@ module.exports.login = async (req, res) => {
         // Success
         req.session.idUser = user.id
 
-        console.log('Logged in!')
+        console.log('User logged in!')
         return res.redirect('/')
     }
     catch (error) {
@@ -215,9 +228,9 @@ exports.password = async (req, res) => {
             $set: {
                 password: hash
             }
-        });
+        })
 
-        await Code.deleteOne({email, code});
+        await Code.deleteOne({email, code})
 
         console.log('Password Recovered')
         return res.redirect('/login')

@@ -21,6 +21,8 @@ router.post('/verification', userController.verification)
 router.post('/password', userController.password)
 
 // GET
+router.get('/logout', userController.logout)
+
 router.get('/login', (req, res) => {
     if(!req.session.idUser){
         res.render('user/login', {layout: 'layouts/user', title: 'Login'})
