@@ -70,7 +70,7 @@ app.use('/', require('./routes/user'));
 
 // Ping Server!
 app.get('/ping', (req, res, next) => {
-    res.send('<h4>Putang ina mo bobo talaga gago!<h4><h4>Sekarang server sementara berjalan!<h4><h4>Now the server is running!<h4>');
+    res.send('pong!');
 });
 
 app.use('/', (req, res) => {

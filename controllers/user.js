@@ -116,6 +116,15 @@ exports.diagnosa = async (req, res) => {
             return res.redirect('/register')            
         }
 
+        const riwayat = {
+            idRiwayat: uuid(),
+            idUser: req.session.idUser,
+            penyakit: "Tidak terdeteksi",
+            solusi: "Tidak terdeteksi",
+            gejala: [],
+            pencegahan: []
+        }
+
         for (let key in penyakit){
             if(gejala.join('') === penyakit[key].rules.join('')){
                 console.log(`Sakit = ${penyakit[key].nama}`)
@@ -123,29 +132,34 @@ exports.diagnosa = async (req, res) => {
                     if(gejala.join('') === solusi[key].rules.join('')){
                         console.log(`Solusi = ${solusi[key].keterangan}`)
 
-                        const riwayat = {
-                            idRiwayat: uuid(),
-                            idUser: req.session.idUser,
-                            penyakit: penyakit[key].nama,
-                            solusi: solusi[key].keterangan,
-                            gejala: penyakit[key].gejala,
-                            pencegahan: penyakit[key].pencegahan
-                        }
+                        riwayat['penyakit'] = penyakit[key].nama
+                        riwayat['solusi'] = solusi[key].keterangan
+                        riwayat['gejala'] = penyakit[key].gejala
+                        riwayat['pencegahan'] = penyakit[key].pencegahan
 
                         if(req.session.idUser){
-                            const newRiwayat = new Riwayat(riwayat)
-                            await newRiwayat.save()
+                            // const newRiwayat = new Riwayat(riwayat)
+                            // await newRiwayat.save()\
+                            
                             console.log('Riwayat baru')
                         }
-
-                        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
+                        
+                        console.log(riwayat)
+                        // return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
                     }
                 }
             }
         }
 
-        console.log('Sakit = Tidak diketahui')        
-        return res.redirect('back')
+        if(req.session.idUser){
+            // const newRiwayat = new Riwayat(riwayat)
+            // await newRiwayat.save()
+
+            console.log('Riwayat baru')
+        }
+
+        console.log(riwayat)
+        // return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
     }
     catch (error){
         console.error('diagnosa-error', error)
