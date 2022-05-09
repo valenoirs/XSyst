@@ -64,6 +64,19 @@ router.get('/informasi', (req, res) => {
     }
 })
 
+router.get('/recovery', (req, res) => {
+    if(!req.session.idUser){
+        res.render('user/recovery', {layout: 'layouts/user', title: 'Password Recovery'})
+    }
+    else{
+        res.redirect('/')
+    }
+})
+
+router.get('/', (req, res) => {
+    res.render('user/index', {layout: 'layouts/user', title: 'Home'})
+})
+
 router.get('/:id', async (req, res) => {
     if(!req.session.idUser){
         res.redirect('/login')
@@ -74,14 +87,6 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.get('/recovery', (req, res) => {
-    if(!req.session.idUser){
-        res.render('user/recovery', {layout: 'layouts/user', title: 'Password Recovery'})
-    }
-    else{
-        res.redirect('/')
-    }
-})
 
 // router.get('/verification', (req, res) => {
 //     if(!req.session.idUser){
@@ -103,9 +108,5 @@ router.get('/recovery', (req, res) => {
 //         res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil', riwayat})
 //     }
 // })
-
-router.get('/', (req, res) => {
-    res.render('user/index', {layout: 'layouts/user', title: 'Home'})
-})
 
 module.exports = router
