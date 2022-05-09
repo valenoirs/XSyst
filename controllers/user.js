@@ -138,28 +138,28 @@ exports.diagnosa = async (req, res) => {
                         riwayat['pencegahan'] = penyakit[key].pencegahan
 
                         if(req.session.idUser){
-                            // const newRiwayat = new Riwayat(riwayat)
-                            // await newRiwayat.save()\
+                            const newRiwayat = new Riwayat(riwayat)
+                            await newRiwayat.save()
                             
                             console.log('Riwayat baru')
                         }
                         
                         console.log(riwayat)
-                        // return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
+                        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
                     }
                 }
             }
         }
 
         if(req.session.idUser){
-            // const newRiwayat = new Riwayat(riwayat)
-            // await newRiwayat.save()
+            const newRiwayat = new Riwayat(riwayat)
+            await newRiwayat.save()
 
             console.log('Riwayat baru')
         }
 
         console.log(riwayat)
-        // return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
+        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
     }
     catch (error){
         console.error('diagnosa-error', error)
