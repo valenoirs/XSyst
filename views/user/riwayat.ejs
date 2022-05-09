@@ -1,20 +1,23 @@
-Halaman Riwayat
-<br><br>
-Riwayat :
-<br>
-<% riwayat.forEach((e,i) => { %>
-    <br>
-    <br> <%= i + 1 %> 
-    <br><br> Penyakit = <%= e.penyakit %>
-    <br><br> Solusi = <%= e.solusi %>
-    <br><br>
-    Gejala
-    <% e.gejala.forEach((e, i) => { %>
-        <br> <%= i + 1 %>. <%= e %>
-    <% }) %>
-    <br><br>
-    Pencegahan
-    <% e.pencegahan.forEach((e, i) => { %>
-        <br> <%= i + 1 %>. <%= e %>
-    <% }) %>
-<% }) %>
+<div class="container-fluid" style="padding: 0;">
+    <div class="row p-5">
+        <h3 class="text-danger">Riwayat</h3>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Penyakit</th>
+                <th scope="col">Waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% riwayat.forEach((e,i) => { %>
+                    <tr>
+                        <th scope="row"><%= i + 1 %></th>
+                        <td><%= e.penyakit %></td>
+                        <td><%= e.createdAt.toLocaleString('id') %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

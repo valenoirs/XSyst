@@ -56,7 +56,6 @@ router.get('/riwayat', async (req, res) => {
     }
     else{
         const riwayatUser = await Riwayat.find({idUser: req.session.idUser})
-        console.log(riwayatUser)
         res.render('user/riwayat', {layout: 'layouts/user', title: 'Riwayat', riwayat: riwayatUser})
     }
 })
