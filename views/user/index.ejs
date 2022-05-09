@@ -1,16 +1,21 @@
 <div class="container-fluid mb-5" style="padding: 0;">
   <div class="row  d-flex align-items-center" style="background-image: linear-gradient(rgba(255,255,255,0.0), rgba(255,255,255,0.0)), url(./home_bg.png); background-size: cover; height: 35rem;">
-    <div class="col-7">
-      <div class="containter" style="padding-left: 25%;">
+    <div class="col-6">
+      <div class="containter" style="padding: 0 5% 0 30%;">
         <h3 class="text-danger">
-          Dear Traveler, Fuck You!
+          <% if (locals.namaUser) { %>
+            Dear <%= locals.namaUser  %>, Fuck You!
+          <% } else { %>
+            Dear Traveler, Fuck You!
+          <% } %> 
         </h3>
         <h6 class="text-danger">
           - Paimon
         </h6>
+        <a class="btn btn-danger mt-4" href="/diagnosa">Diagnosa</a>
       </div>
     </div>
-    <div class="col-5">
+    <div class="col-6">
       <img src="" alt="" style="height: 100px;">
     </div>
   </div>
