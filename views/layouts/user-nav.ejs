@@ -31,7 +31,11 @@
             </li> -->
         </ul>
         <div class="d-flex">
-            <a class="text-light" href="/logout" style="text-decoration: none;">Logout</a>
+            <% if (locals.idUser) { %>
+                <a class="text-light" href="/logout" style="text-decoration: none;">Logout</a>
+            <% } else { %>
+                <a class="text-light" href="/login" style="text-decoration: none;">Login</a>
+            <% } %> 
         </div>
         </div>
     </div>

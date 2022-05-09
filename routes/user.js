@@ -42,12 +42,7 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/diagnosa', (req, res) => {
-    if(!req.session.idUser){
-        res.redirect('/login')
-    }
-    else{
-        res.render('user/diagnosa', {layout: 'layouts/user', title: 'Diagnosa'})
-    }
+    res.render('user/diagnosa', {layout: 'layouts/user', title: 'Diagnosa'})
 })
 
 router.get('/riwayat', async (req, res) => {
@@ -110,12 +105,7 @@ router.get('/recovery', (req, res) => {
 // })
 
 router.get('/', (req, res) => {
-    if(!req.session.idUser){
-        res.redirect('/login')
-    }
-    else{
-        res.render('user/index', {layout: 'layouts/user', title: 'Home'})
-    }
+    res.render('user/index', {layout: 'layouts/user', title: 'Home'})
 })
 
 module.exports = router
