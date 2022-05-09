@@ -5,6 +5,18 @@
     <form method="POST" action="/diagnosa" class="">
         <div class="mb-4">
           <label for="flexSwitchCheckDefault1" class="form-label">1. Apakah penglihatan anda terasa buram?</label>
+          <div class="form-check">
+            <div class="input-group">
+              <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+              <label class="btn btn-outline-danger" for="success-outlined" style="width: 75px; height: 35px; border-radius: 10px 0 0 10px;">Tidak</label>
+  
+              <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+              <label class="btn btn-outline-danger" for="danger-outlined" style="width: 75px; height: 35px; border-radius: 0 10px 10px 0;">Ya</label>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="flexSwitchCheckDefault1" class="form-label">1. Apakah penglihatan anda terasa buram?</label>
           <div class="form-check form-switch">
             <input class="form-check-input" name="G01" value="G01" type="checkbox" id="flexSwitchCheckDefault1">
             <label class="form-check-label" for="flexSwitchCheckDefault1"></label>

@@ -8,9 +8,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Switch Button Color -->
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet" />
-
     <link rel="shortcut icon" type="image/png" href="./icon.png" />
 
     <style>
@@ -59,6 +56,30 @@
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
       background: rgb(255, 192, 198);
+    }
+
+    /* Checkbox */
+    .checkbox-teal [type="checkbox"]:checked+label:before {
+      border-color: transparent #009688 #009688 transparent;
+    }
+
+    .checkbox-warning-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+      border-color: #FF8800;
+      background-color: #FF8800;
+    }
+
+    .checkbox-rounded [type="checkbox"][class*='filled-in']+label:after {
+      border-radius: 50%;
+    }
+
+    .checkbox-living-coral-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+      border-color: #FF6F61;
+      background-color: #FF6F61;
+    }
+
+    .checkbox-cerulean-blue-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+      border-color: #92aad0;
+      background-color: #92aad0;
     }
     </style>
 
