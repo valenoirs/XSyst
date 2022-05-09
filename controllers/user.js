@@ -14,6 +14,7 @@ const Code = require('../models/code')
 module.exports.logout = async (req, res) => {
     try{
         delete req.session.idUser
+        delete req.session.namaUser
 
         console.log('User logged out')
         return res.redirect('/')
@@ -47,6 +48,7 @@ exports.login = async (req, res) => {
 
         // Success
         req.session.idUser = user.id
+        req.session.namaUser = user.nama
 
         console.log('User logged in!')
         return res.redirect('/')

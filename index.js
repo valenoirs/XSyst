@@ -34,11 +34,9 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-    if(req.session.idUser){
+    if(req.session.idUser && req.session.namaUser){
         res.locals.idUser = req.session.idUser;
-    }
-    if(req.session.idAdmin){
-        res.locals.idAdmin = req.session.idAdmin;
+        res.locals.namaUser = req.session.namaUser;
     }
 
     next();
