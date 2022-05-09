@@ -50,6 +50,8 @@ exports.login = async (req, res) => {
         req.session.idUser = user.id
         req.session.namaUser = user.nama
 
+        await Code.deleteMany({email: req.body.email})
+
         console.log('User logged in!')
         return res.redirect('/')
     }
