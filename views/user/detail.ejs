@@ -1,5 +1,37 @@
-<div class="container-fluid" style="padding: 0;">
-    <div class="row p-5">
-        Halaman Detail
+<div class="container-fluid" style="padding: 5% 10% 5% 10%;">
+    <div class="row">
+        <h3 class="text-danger mb-3">Detail Diagnosa <%= detail.createdAt.toLocaleString('id') %></h3>
+        <table class="table table-bordered border-danger">
+            <tbody>
+                <tr>
+                    <th scope="row" style="width: 200px;">Nama</th>
+                    <td>Valenoirs</td>
+                </tr>
+                <tr>
+                    <th scope="row">Penyakit</th>
+                    <td><%= detail.penyakit %></td>
+                </tr>
+                <tr>
+                    <th scope="row">Solusi</th>
+                    <td><%= detail.solusi %></td>
+                </tr>
+                <tr>
+                    <th scope="row">Gejala</th>
+                    <td>
+                        <% detail.gejala.forEach((gejala, i) => { %>
+                            <p><%= i + 1 %>. <%= gejala %></p>
+                        <% }) %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Pencegahan</th>
+                    <td>
+                        <% detail.pencegahan.forEach((pencegahan, i) => { %>
+                            <p><%= i + 1 %>. <%= pencegahan %></p>
+                        <% }) %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
