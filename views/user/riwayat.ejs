@@ -1,20 +1,32 @@
 <div class="container-fluid" style="padding: 0;">
     <div class="row p-5">
-        <h3 class="text-danger">Riwayat</h3>
+        <h3 class="text-danger mb-3">Riwayat</h3>
         <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Penyakit</th>
-                <th scope="col">Waktu</th>
+                <th scope="col" style="width: 1rem;">No</th>
+                <th scope="col" style="width: 5rem;">Penyakit</th>
+                <th scope="col" style="width: 5rem;">Waktu</th>
+                <th scope="col" style="width: 5rem;">Detail</th>
               </tr>
             </thead>
             <tbody>
                 <% riwayat.forEach((e,i) => { %>
                     <tr>
                         <th scope="row"><%= i + 1 %></th>
-                        <td><%= e.penyakit %></td>
-                        <td><%= e.createdAt.toLocaleString('id') %></td>
+                        <td>
+                            <h6>
+                                <%= e.penyakit %>
+                            </h6>
+                        </td>
+                        <td>
+                            <%= e.createdAt.toLocaleString('id') %>
+                        </td>
+                        <td>
+                            <a class="text-danger" style="text-decoration: none;" href="/<%= e.id %>">
+                                Detail
+                            </a>
+                        </td>
                     </tr>
                 <% }) %>
             </tbody>

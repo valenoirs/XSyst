@@ -117,7 +117,7 @@ exports.diagnosa = async (req, res) => {
         }
 
         const riwayat = {
-            idRiwayat: uuid(),
+            id: uuid(),
             idUser: req.session.idUser,
             penyakit: "Tidak terdeteksi",
             solusi: "Tidak terdeteksi",

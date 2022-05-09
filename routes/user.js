@@ -69,12 +69,22 @@ router.get('/informasi', (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    if(!req.session.idUser){
+        res.redirect('/login')
+    }
+    else{
+        const detail = await Riwayat.findOne({id: req.params.id})
+        res.render('user/detail', {layout: 'layouts/user', title: 'Eye X Sys', detail})
+    }
+})
+
 router.get('/recovery', (req, res) => {
     if(!req.session.idUser){
         res.render('user/recovery', {layout: 'layouts/user', title: 'Password Recovery'})
     }
     else{
-        res.redirect('/login')
+        res.redirect('/')
     }
 })
 
