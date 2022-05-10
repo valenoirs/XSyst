@@ -1,13 +1,40 @@
-halaman hasil
-<br><br>
-Penyakit = <%= riwayat.penyakit %>
-<br><br>
-Solusi = <%= riwayat.solusi %>
-<br><br>
-gejala = <% riwayat.gejala.forEach((element, i) => { %>
-    <br><%= i + 1 %>. <%= element %> 
-<% }) %>
-<br><br>
-pencegahan = <% riwayat.pencegahan.forEach((element, i) => { %>
-    <br> <%=i + 1 %>. <%= element %>
-<% }) %>
+<div class="container-fluid" style="padding: 5% 10% 5% 10%;">
+    <div class="row">
+        <h3 class="text-danger mb-3">Hasil Diagnosa</h3>
+        <h6 class="text-secondary mb-5"><%= new Date().toLocaleString('id') %></h6>
+        <table class="table table-bordered border-danger">
+            <tbody>
+                <% if (locals.namaUser) { %>
+                    <tr>
+                        <th scope="row" style="width: 200px;">Nama</th>
+                        <td><%= locals.namaUser %></td>
+                    </tr>
+                <% } %>
+                <tr>
+                    <th scope="row">Penyakit</th>
+                    <td class="text-danger"><%= riwayat.penyakit %></td>
+                </tr>
+                <tr>
+                    <th scope="row">Solusi</th>
+                    <td><%= riwayat.solusi %></td>
+                </tr>
+                <tr>
+                    <th scope="row">Gejala</th>
+                    <td>
+                        <% riwayat.gejala.forEach((gejala, i) => { %>
+                            <p><%= i + 1 %>. <%= gejala %></p>
+                        <% }) %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Pencegahan</th>
+                    <td>
+                        <% riwayat.pencegahan.forEach((pencegahan, i) => { %>
+                            <p><%= i + 1 %>. <%= pencegahan %></p>
+                        <% }) %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
