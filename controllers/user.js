@@ -95,9 +95,14 @@ exports.register = async (req, res) => {
         await newUser.save()
 
         console.log(newUser)
-        console.log('User added!')
 
-        return res.redirect('/login')
+        // Log in user!
+        req.session.idUser = req.body.id
+        req.session.namaUser = req.body.nama.split(' ')[0]
+
+        console.log('User registered and logged in!')
+
+        return res.redirect('/')
 
     }
     catch (error) {
