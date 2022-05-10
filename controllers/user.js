@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
 
         // Success
         req.session.idUser = user.id
-        req.session.namaUser = user.nama.split(' ')[0]
+        req.session.namaUser = user.nama
 
         await Code.deleteMany({email: req.body.email})
 
@@ -98,7 +98,7 @@ exports.register = async (req, res) => {
 
         // Log in user!
         req.session.idUser = req.body.id
-        req.session.namaUser = req.body.nama.split(' ')[0]
+        req.session.namaUser = req.body.nama
 
         console.log('User registered and logged in!')
 
