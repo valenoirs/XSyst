@@ -26,8 +26,22 @@
     }
 
     .form-check-input:checked {
-      background-color: rgb(220, 53, 69);
-      /* border-color: pink; */
+      background-color: #dc3545;
+      border-color: #ffc0cb;
+    }
+
+    .form-switch .form-check-input:focus {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='pink'/%3e%3c/svg%3e");
+    }
+
+    .form-check-input:focus {
+      border-color: #ffc0cb;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #ff707e80;
+    }
+
+    .form-control:focus {
+        border-color: #ffc0cb;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #ff707e80;
     }
 
     /* width */
@@ -93,6 +107,20 @@
     <main>
       <div class="container" style="padding-top: 3.5rem;">
       </div>
+      
+      <!-- Error Container -->
+      <div class="containter">
+        <% if (error.length > 0) { %>
+          <div class="row" style="padding: 2% 5% 0 5%;">
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <%= error %>.
+            </div>
+          </div>
+        <% } %>
+      </div>
+      
+      <!-- Main Content -->
         <%- body %> 
     </main>
 

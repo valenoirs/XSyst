@@ -72,11 +72,11 @@ exports.register = async (req, res) => {
             return res.redirect('/register')
         }
 
-        // if(req.body.password.length < 8){
-        //     console.log('Password length less than 8 characters!')
-        //     req.flash('error', 'Password terlalu singkat!')
-        //     return res.redirect('/register')
-        // }
+        if(req.body.password.length < 8){
+            console.log('Password length less than 8 characters!')
+            req.flash('error', 'Password terlalu singkat!')
+            return res.redirect('/register')
+        }
 
         if(req.body.password !== req.body.confirmPassword){
             console.log('Password validation error!')
@@ -149,7 +149,7 @@ exports.diagnosa = async (req, res) => {
                         }
                         
                         console.log(riwayat)
-                        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
+                        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat, error: req.flash('error')})
                     }
                 }
             }
@@ -163,7 +163,7 @@ exports.diagnosa = async (req, res) => {
         }
 
         console.log(riwayat)
-        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat})
+        return res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil Diagnosa', riwayat, error: req.flash('error')})
     }
     catch (error){
         console.error('diagnosa-error', error)
@@ -196,7 +196,7 @@ exports.recovery = async (req, res) => {
         newCode.save()
 
         console.log('Email sent!')
-        return res.render('user/verification', {layout: 'layouts/user', title: 'Verification', email})
+        return res.render('user/verification', {layout: 'layouts/user', title: 'Verification', email, error: req.flash('error')})
         // return res.redirect('/verification')
     }
     catch (error){
@@ -216,11 +216,11 @@ exports.verification = async (req, res) => {
         if(!verified){
             console.log('Verification code incorrect!')
             req.flash('error', 'Code verifikasi salah!')
-            return res.render('user/verification', {layout: 'layouts/user', title: 'Verification', email})
+            return res.render('user/verification', {layout: 'layouts/user', title: 'Verification', email, error: req.flash('error')})
         }
         
         console.log('Verified')
-        return res.render('user/password', {layout: 'layouts/user', title: 'Reset Password', email, code})
+        return res.render('user/password', {layout: 'layouts/user', title: 'Reset Password', email, code, error: req.flash('error')})
     }
     catch(error){
         console.error('verification-error', error)
@@ -237,7 +237,7 @@ exports.password = async (req, res) => {
         if(password !== confirmPassword){
             console.log('Password validation error!')
             req.flash('error', 'Konfirmasi password salah!')
-            return res.render('user/password', {layout: 'layouts/user', title: 'Reset Password', email, code})
+            return res.render('user/password', {layout: 'layouts/user', title: 'Reset Password', email, code, error: req.flash('error')})
         }
 
         const hash = await hashPassword(password)
