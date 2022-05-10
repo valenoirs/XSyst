@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
 
         // Success
         req.session.idUser = user.id
-        req.session.namaUser = user.nama
+        req.session.namaUser = user.nama.split(' ')[0]
 
         await Code.deleteMany({email: req.body.email})
 

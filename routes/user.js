@@ -55,7 +55,7 @@ router.get('/riwayat', async (req, res) => {
     }
     else{
         const riwayatUser = await Riwayat.find({idUser: req.session.idUser})
-        res.render('user/riwayat', {layout: 'layouts/user', title: 'Riwayat', riwayat: riwayatUser})
+        res.render('user/riwayat', {layout: 'layouts/user', title: 'Riwayat', riwayat: riwayatUser, error: req.flash('error')})
     }
 })
 
@@ -87,7 +87,7 @@ router.get('/:id', async (req, res) => {
     }
     else{
         const detail = await Riwayat.findOne({id: req.params.id})
-        res.render('user/detail', {layout: 'layouts/user', title: 'Eye X Sys', detail})
+        res.render('user/detail', {layout: 'layouts/user', title: 'Eye X Sys', detail, error: req.flash('error')})
     }
 })
 
@@ -109,7 +109,7 @@ router.get('/:id', async (req, res) => {
 //         const semuaRiwayat = await Riwayat.find()
 //         const riwayat = semuaRiwayat[semuaRiwayat.length - 1]
         
-//         res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil', riwayat})
+//         res.render('user/hasil', {layout: 'layouts/user', title: 'Hasil', riwayat, error: req.flash('error')})
 //     }
 // })
 

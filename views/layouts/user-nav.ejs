@@ -3,7 +3,7 @@
 </div>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-danger">
     <div class="container-fluid ps-5 pe-5">
-        <a class="navbar-brand" href="#">Eye-x-Sys</a>
+        <a class="navbar-brand" href="/"><img src="./icon_white.png"> Eye-X-Sys</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,21 +18,25 @@
             <li class="nav-item">
             <a class="nav-link" href="/riwayat">Riwayat</a>
             </li>
-            <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            </li> -->
         </ul>
         <div class="d-flex">
             <% if (locals.idUser) { %>
-                <a class="text-light" href="/logout" style="text-decoration: none;">Logout</a>
+                <div class="dropdown dropstart">
+                    <a class="text-light dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
+                    <%= locals.namaUser %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item text-danger" href="/profile" style="text-decoration: none;">Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item text-danger" href="/logout" style="text-decoration: none;">Logout</a>
+                        </li>
+                        <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                    </ul>
+                </div>
             <% } else { %>
                 <a class="text-light" href="/login" style="text-decoration: none;">Login</a>
             <% } %> 
