@@ -6,6 +6,7 @@ const userController = require('../controllers/user')
 const Riwayat = require('../models/riwayat')
 const Gejala = require('../models/gejala')
 const Penyakit = require('../models/penyakit')
+const User = require('../models/user')
 
 // POST
 router.post('/login', userController.login)
@@ -41,14 +42,16 @@ router.get('/register', (req, res) => {
     }
 })
 
-// router.get('/profile', async (req, res) => {
-//     if(!req.session.idUser){
-//         res.redirect('/login')
-//     }
-//     else{
-//         res.render('user/profile', {layout: 'layouts/user', title: 'Profile', error: req.flash('error')})
-//     }
-// })
+router.get('/edit', async (req, res) => {
+    if(!req.session.idUser){
+        res.redirect('/login')
+    }
+    else{
+        const user = await User.findOne({id: req.session.idUser})
+
+        res.render('user/edit', {layout: 'layouts/user', title: 'Edit', user, error: req.flash('error')})
+    }
+})
 
 router.get('/diagnosa', (req, res) => {
     res.render('user/diagnosa', {layout: 'layouts/user', title: 'Diagnosa', error: req.flash('error')})
