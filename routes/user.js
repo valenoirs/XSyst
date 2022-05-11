@@ -21,6 +21,8 @@ router.post('/verification', userController.verification)
 
 router.post('/password', userController.password)
 
+router.post('/edit', userController.edit)
+
 // GET
 router.get('/logout', userController.logout)
 

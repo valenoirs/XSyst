@@ -265,3 +265,55 @@ exports.password = async (req, res) => {
         return res.redirect('back')
     }
 } // Password
+
+exports.edit = async (req, res) => {
+    try{
+        const user = await User.findOne({id: req.session.idUser})
+
+        // if(user){
+        //     console.log('User with same email found!')
+        //     req.flash('error', 'Email telah terdaftar!')
+        //     return res.redirect('/register')
+        // }
+
+        if(req.body.password.length < 8){
+            console.log('Password length less than 8 characters!')
+            req.flash('error', 'Password terlalu singkat!')
+            return res.redirect('/register')
+        }
+
+        if(req.body.password !== req.body.confirmPassword){
+            console.log('Password validation error!')
+            req.flash('error', 'Konfirmasi password salah!')
+            return res.redirect('/register')
+        }
+
+        const hash = await hashPassword(req.body.password)
+
+        delete req.body.confirmPassword
+
+        req.body.password = hash
+
+        await User.updateOne({id: req.session.idUser}, {
+            $set: {
+                email: req.body.email,
+                nama: req.body.nama,
+                password: hash,
+            }
+        })
+
+        req.session.namaUser = req.body.nama
+        req.session.email = req.body.email
+        
+        res.locals.namaUser = req.session.namaUser
+        res.locals.emailUser = req.session.emailUser
+
+        console.log('User Edited')
+        return res.redirect('/')
+    }
+    catch (error){
+        console.error('edit-error', error)
+        req.session.error = "Edit Error"
+        return res.redirect('/')
+    }
+} // Edit
