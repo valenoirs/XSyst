@@ -41,6 +41,15 @@ router.get('/register', (req, res) => {
     }
 })
 
+// router.get('/profile', async (req, res) => {
+//     if(!req.session.idUser){
+//         res.redirect('/login')
+//     }
+//     else{
+//         res.render('user/profile', {layout: 'layouts/user', title: 'Profile', error: req.flash('error')})
+//     }
+// })
+
 router.get('/diagnosa', (req, res) => {
     res.render('user/diagnosa', {layout: 'layouts/user', title: 'Diagnosa', error: req.flash('error')})
 })

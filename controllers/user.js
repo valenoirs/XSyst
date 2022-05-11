@@ -49,6 +49,7 @@ exports.login = async (req, res) => {
         // Success
         req.session.idUser = user.id
         req.session.namaUser = user.nama
+        req.session.emailUser = user.email
 
         await Code.deleteMany({email: req.body.email})
 
@@ -99,6 +100,7 @@ exports.register = async (req, res) => {
         // Log in user!
         req.session.idUser = req.body.id
         req.session.namaUser = req.body.nama
+        req.session.emailUser = req.body.email
 
         console.log('User registered and logged in!')
 
@@ -114,8 +116,7 @@ exports.register = async (req, res) => {
 
 exports.diagnosa = async (req, res) => {
     try{
-        console.log(req.body)
-        const gejala = Object.values(req.body)
+        const gejala = Object.values(req.body).filter(e => e !== '')
         const penyakit = await Penyakit.find()
         const solusi = await Solusi.find()
 
