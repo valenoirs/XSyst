@@ -163,6 +163,9 @@
           </div>
         </div>
         <br>
+        <% if (!locals.namaUser) { %>
+          <p class="text-secondary" style="font-size: 1rem;">*Riwayat diagnosa <span class="text-danger">tidak</span> akan disimpan, harap lakukan login untuk menyimpan riwayat</p>
+        <% } %>
         <button type="submit" class="btn btn-danger">Submit</button>
       </form>
   </div>

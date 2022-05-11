@@ -42,9 +42,6 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/diagnosa', (req, res) => {
-    if(!req.session.idUser){
-        req.flash('error', 'Riwayat diagnosa tidak akan disimpan, harap lakukan login untuk menyimpan riwayat')
-    }
     res.render('user/diagnosa', {layout: 'layouts/user', title: 'Diagnosa', error: req.flash('error')})
 })
 
