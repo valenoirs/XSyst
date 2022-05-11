@@ -65,6 +65,7 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
     try {
+        const {nama, email, password, confirmPassword} = req.body
         const user = await User.findOne({email: req.body.email})
         
         if(user){
@@ -269,41 +270,31 @@ exports.password = async (req, res) => {
 exports.edit = async (req, res) => {
     try{
         const user = await User.findOne({id: req.session.idUser})
+        const duplicateUser = await User.findOne({email: req.body.email})
 
-        // if(user){
-        //     console.log('User with same email found!')
-        //     req.flash('error', 'Email telah terdaftar!')
-        //     return res.redirect('/register')
-        // }
-
-        if(req.body.password.length < 8){
-            console.log('Password length less than 8 characters!')
-            req.flash('error', 'Password terlalu singkat!')
-            return res.redirect('/register')
+        if(duplicateUser && req.body.email !== user.email){
+            console.log('User with same email found!')
+            req.flash('error', 'Email telah terdaftar!')
+            return res.redirect('back')
         }
 
-        if(req.body.password !== req.body.confirmPassword){
-            console.log('Password validation error!')
-            req.flash('error', 'Konfirmasi password salah!')
-            return res.redirect('/register')
+        const passwordValid = comparePassword(req.body.password, user.password)
+
+        if(!passwordValid){
+            console.log('Password invalid!')
+            req.flash('error', 'Password salah!')
+            return res.redirect('back')
         }
-
-        const hash = await hashPassword(req.body.password)
-
-        delete req.body.confirmPassword
-
-        req.body.password = hash
 
         await User.updateOne({id: req.session.idUser}, {
             $set: {
                 email: req.body.email,
                 nama: req.body.nama,
-                password: hash,
             }
         })
 
         req.session.namaUser = req.body.nama
-        req.session.email = req.body.email
+        req.session.emailUser = req.body.email
         
         res.locals.namaUser = req.session.namaUser
         res.locals.emailUser = req.session.emailUser
@@ -314,6 +305,6 @@ exports.edit = async (req, res) => {
     catch (error){
         console.error('edit-error', error)
         req.session.error = "Edit Error"
-        return res.redirect('/')
+        return res.redirect('back')
     }
 } // Edit
