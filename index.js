@@ -5,7 +5,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
-const cors = require('cors')
+const helmet = require('helmet')
 
 // Local module
 const penyakitController = require('./controllers/penyakit')
@@ -18,7 +18,7 @@ const app = express()
 const port = process.env.PORT || 5000
 
 // Middleware
-app.use(cors())
+app.use(helmet())
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
