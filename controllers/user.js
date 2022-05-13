@@ -275,7 +275,7 @@ exports.edit = async (req, res) => {
         if(duplicateUser && req.body.email !== user.email){
             console.log('User with same email found!')
             req.flash('error', 'Email telah terdaftar!')
-            return res.redirect('back')
+            return res.redirect('/edit')
         }
 
         const passwordValid = comparePassword(req.body.password, user.password)
@@ -283,7 +283,7 @@ exports.edit = async (req, res) => {
         if(!passwordValid){
             console.log('Password invalid!')
             req.flash('error', 'Password salah!')
-            return res.redirect('back')
+            return res.redirect('/edit')
         }
 
         await User.updateOne({id: req.session.idUser}, {
