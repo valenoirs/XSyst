@@ -1,30 +1,33 @@
 <div class="container-fluid mb-5" style="padding: 0;">
   <div class="row d-flex align-items-center" style="background-image: linear-gradient(rgba(255,255,255,0.0), rgba(255,255,255,0.0)), url(./home_bg.png); background-size: cover; height: 38rem;">
-    <div class="col-6">
-      <div class="containter" style="padding: 0 5% 0 30%;">
-        <h3 class="text-danger">
-          <% if (locals.namaUser) { %>
-            Dear <%= locals.namaUser.split(' ')[0]  %>, Fuck You!
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="containter" style="padding: 0 5% 0 30%;">
+          <h3 class="text-danger">
+            <% if (locals.namaUser) { %>
+          <!-- Selamat Datang <%= locals.namaUser.split(' ')[0]  %> -->
+          Hello, <%= locals.namaUser.split(' ')[0]  %>
           <% } else { %>
-            Dear Traveler, Fuck You!
-          <% } %> 
-        </h3>
-        <h6 class="text-danger">
-          - Paimon
-        </h6>
-        <a class="btn btn-danger mt-4" href="/diagnosa">Diagnosa</a>
+            Beauty is in the eye of the beholder
+            <% } %> 
+          </h3>
+          <h6 class="">
+            Beauty is in the eye of the beholder
+          </h6>
+          <a class="btn btn-danger mt-4" href="/diagnosa">Diagnosa</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <img src="" alt="" style="height: 20rem;">
       </div>
     </div>
-    <div class="col-6">
-      <img src="" alt="" style="height: 100px;">
-    </div>
+    <!-- <div class="row">
+      <div class="col">
+        <h6 class="text-light text-center">Scroll Down</h6>
+        <h6 class="text-light text-center"><i class="bi bi-arrow-bar-down"></i></h6>
+      </div>
+    </div> -->
   </div>
-  <!-- <div class="row mt-4">
-    <div class="col">
-      <h6 class="text-danger text-center">Scroll Down</h6>
-      <h6 class="text-danger text-center"><i class="bi bi-arrow-bar-down"></i></h6>
-    </div>
-  </div> -->
   <div class="row" style="padding: 5% 10% 5% 10%;">
     <div class="col d-flex justify-content-center p-3">
       <div class="card text-center p-3" style="width: 18rem;">
