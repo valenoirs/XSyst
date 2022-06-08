@@ -18,12 +18,18 @@ const app = express()
 const port = process.env.PORT || 5000
 
 // Middleware
-app.use(helmet())
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-      scriptSrc: ['https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'],
+app.use(helmet({
+    crossOriginEmbedderPolicy: false,
+    contentSecurityPolicy: {
+        directives: {
+            scriptSrc: [
+                "'self'",
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
+                'https://unpkg.com/aos@2.3.1/dist/aos.js'
+            ],
+        }
     }
-}));
+}))
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
