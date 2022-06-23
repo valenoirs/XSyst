@@ -1,130 +1,52 @@
 <div class="container-fluid mb-5" style="padding: 0;">
-  <div class="row d-flex align-items-center" style="background-image: linear-gradient(rgba(255,255,255,0.0), rgba(255,255,255,0.0)), url(./home_bg.png); background-size: cover; height: 38rem;">
+  <div class="row d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(./home_bg.webp); background-size: cover; height: 38rem;">
     <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="containter" style="padding: 0 5% 0 30%;">
-          <h3 class="text-danger">
-            <% if (locals.namaUser) { %>
-              <!-- Selamat Datang <%= locals.namaUser.split(' ')[0]  %> -->
-              Selamat Datang, <%= locals.namaUser.split(' ')[0]  %>
-            <% } else { %>
-              Selamat Datang
-            <% } %> 
-          </h3>
-          <h6 class="text-danger">
-            <i>"Beauty is in the eye of the beholder"</i>
-          </h6>
-          <a class="btn btn-danger mt-4" href="/diagnosa">Diagnosa</a>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12">
-        <img src="" alt="" style="height: 20rem;">
+      <div class="col text-center">
+        <!-- <img src="./icon.png" alt=""> -->
+        <h3 class="text-danger display-4">
+          <% if (locals.namaUser) { %>
+            Selamat Datang, <%= locals.namaUser.split(' ')[0]  %>
+          <% } else { %>
+            Selamat Datang
+          <% } %> 
+        </h3>
+        <p class="text-danger display-6" style="font-size: 1.3rem;">
+            Beauty is in The Eye of The beholder
+        </p>
+        <a class="btn btn-danger mt-5" href="/diagnosa">Diagnosa</a>
       </div>
     </div>
-    <!-- <div class="row">
-      <div class="col">
-        <h6 class="text-light text-center">Scroll Down</h6>
-        <h6 class="text-light text-center"><i class="bi bi-arrow-bar-down"></i></h6>
-      </div>
-    </div> -->
   </div>
   <div class="row" style="padding: 5% 10% 5% 10%;">
     <div class="col d-flex justify-content-center p-3" data-aos="fade-up">
       <div class="card text-center p-3" style="width: 18rem;">
         <h1 class="text-danger pt-5 display-4"><i class="bi bi-eye"></i></h1>
-        <!-- <img src="./card.png" class="card-img-top" alt="..."> -->
         <div class="card-body pb-5">
-          <h5 class="card-title text-danger">Apa itu Eye-X-Sys?</h5>
-          <p class="text-secondary">- - -</p>
-          <p class="card-text text-secondary">Eye-X-Sys merupakan sistem pakar yang dirancang untuk mendeteksi penyakit mata. pada manusia. Namun hanya terbatas pada 5 jenis penyakit mata yaitu, Refraksi Mata, Katarak,  Ablasio, Glaukoma, Konjungtivitis.</p>
+          <p class="card-title text-danger" style="font-size: 1.2rem;">Apa itu Eye-X-Sys?</p>
+          <p class="text-muted">- - -</p>
+          <p class="card-text text-muted">Eye-X-Sys merupakan sistem pakar yang dirancang untuk mendeteksi penyakit mata. pada manusia. Namun hanya terbatas pada 5 jenis penyakit mata yaitu, Refraksi Mata, Katarak,  Ablasio, Glaukoma, Konjungtivitis.</p>
         </div>
       </div>
     </div>
     <div class="col d-flex justify-content-center p-3" data-aos="fade-up">
       <div class="card text-center p-3" style="width: 18rem;">
         <h1 class="text-danger pt-5 display-4"><i class="bi bi-cpu"></i></h1>
-        <!-- <img src="./card.png" class="card-img-top" alt="..."> -->
         <div class="card-body pb-5">
-          <h5 class="card-title text-danger">Cara kerja Eye-X-Sys?</h5>
-          <p class="text-secondary">- - -</p>
-          <p class="card-text text-secondary">Eye-X-Sys melakukan diagnosa penyakit menggunakan metode forward chaining berdasarkan gejala yang dipilih user sebagai input. Selanjutnya Eye-X-Sys menggunakan metode backward chaining untuk mencari solusi dari penyakit yang berhasil didiagnosa.</p>
+          <p class="card-title text-danger" style="font-size: 1.2rem;">Cara kerja Eye-X-Sys?</p>
+          <p class="text-muted">- - -</p>
+          <p class="card-text text-muted">Eye-X-Sys melakukan diagnosa penyakit menggunakan metode forward chaining berdasarkan gejala yang dipilih user sebagai input. Selanjutnya Eye-X-Sys menggunakan metode backward chaining untuk mencari solusi dari penyakit yang berhasil didiagnosa.</p>
         </div>
       </div>
     </div>  
     <div class="col d-flex justify-content-center p-3" data-aos="fade-up">
       <div class="card text-center p-3" style="width: 18rem;">
-        <!-- <img src="./card.png" class="card-img-top" alt="..."> -->
         <h1 class="text-danger pt-5 display-4"><i class="bi bi-exclamation-circle"></i></i></h1>
         <div class="card-body pb-5">
-          <h5 class="card-title text-danger">Perhatian!</h5>
-          <p class="text-secondary">- - -</p>
-          <p class="card-text text-secondary">System tidak dapat menggantikan peran ahli yang sebenarnya dalam hal ini dokter mata. System ini hanya melakukan diagnosa awal dengan tujuan untuk mencegah penyakit agar tidak lebih parah.</p>
+          <p class="card-title text-danger" style="font-size: 1.2rem;">Perhatian!</p>
+          <p class="text-muted">- - -</p>
+          <p class="card-text text-muted">System tidak dapat menggantikan peran ahli yang sebenarnya dalam hal ini dokter mata. System ini hanya melakukan diagnosa awal dengan tujuan untuk mencegah penyakit agar tidak lebih parah.</p>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="row" style="padding: 0 10% 0% 10%;">
-    <h3 class="text-danger">How to use?</h3>
-  </div>
-  <div style="padding: 0 6% 0 5%;">
-    <div class="row">
-      <div class="col-6 p-5">
-        <img src="./howto/1.png" alt="" style="height: 18rem;">
-      </div>
-      <div class="col-6 p-5">
-        <h4 class="text-danger">Keterangan</h4>
-        <p class="text-secondary">Pertama tekan tombol <span class="text-danger">diagnosa</span> yang terdapat pada utama ataupun yang terdapat pada navbar di atas.</p>
-      </div>
-    </div>
-    <h6 class="text-danger text-center">----------------------------------------------------------------------------------------------------</h6>
-    <div class="row">
-      <div class="col-6 p-5">
-        <h4 class="text-danger">Keterangan</h4>
-        <p class="text-secondary">Pertama tekan tombol <span class="text-danger">diagnosa</span> yang terdapat pada utama ataupun yang terdapat pada navbar di atas.</p>
-      </div>
-      <div class="col-6 p-5">
-        <img src="./howto/2.png" alt="" style="height: 18rem;">
-      </div>
-    </div>
-    <h6 class="text-danger text-center">----------------------------------------------------------------------------------------------------</h6>
-    <div class="row">
-      <div class="col-6 p-5">
-        <img src="./howto/3.png" alt="" style="height: 18rem;">
-      </div>
-      <div class="col-6 p-5">
-        <h4 class="text-danger">Keterangan</h4>
-        <p class="text-secondary">Pertama tekan tombol <span class="text-danger">diagnosa</span> yang terdapat pada utama ataupun yang terdapat pada navbar di atas.</p>
-      </div>
-    </div>
-    <h6 class="text-danger text-center">----------------------------------------------------------------------------------------------------</h6>
-    <div class="row">
-      <div class="col-6 p-5">
-        <h4 class="text-danger">Keterangan</h4>
-        <p class="text-secondary">Pertama tekan tombol <span class="text-danger">diagnosa</span> yang terdapat pada utama ataupun yang terdapat pada navbar di atas.</p>
-      </div>
-      <div class="col-6 p-5">
-        <img src="./howto/4.png" alt="" style="height: 18rem;">
-      </div>
-    </div>
-    <h6 class="text-danger text-center">----------------------------------------------------------------------------------------------------</h6>
-    <div class="row">
-      <div class="col-6 p-5">
-        <img src="./howto/5.png" alt="" style="height: 18rem;">
-      </div>
-      <div class="col-6 p-5">
-        <h4 class="text-danger">Keterangan</h4>
-        <p class="text-secondary">Pertama tekan tombol <span class="text-danger">diagnosa</span> yang terdapat pada utama ataupun yang terdapat pada navbar di atas.</p>
-      </div>
-    </div>
-    <h6 class="text-danger text-center">----------------------------------------------------------------------------------------------------</h6>
-    <div class="row">
-      <div class="col-6 p-5">
-        <h4 class="text-danger">Keterangan</h4>
-        <p class="text-secondary">Pertama tekan tombol <span class="text-danger">diagnosa</span> yang terdapat pada utama ataupun yang terdapat pada navbar di atas.</p>
-      </div>
-      <div class="col-6 p-5">
-        <img src="./howto/6.png" alt="" style="height: 18rem;">
-      </div>
-    </div>
-  </div> -->
 </div>

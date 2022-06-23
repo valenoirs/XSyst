@@ -1,7 +1,8 @@
 <div class="container-fluid" style="padding: 55px 10% 5% 10%;">
     <div class="row">
         <h3 class="text-danger mb-3">Hasil Diagnosa</h3>
-        <h6 class="text-secondary mb-5"><%= detail.createdAt.toLocaleString('id') %></h6>
+        <h6 class="text-secondary"><%= detail.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric', month: 'long', year: 'numeric'}) %></h6>
+        <h6 class="text-secondary mb-5"><%= detail.createdAt.toLocaleString('id', {hour: '2-digit', minute: '2-digit'}) %></h6>
         <table class="table table-bordered border-danger">
             <tbody>
                 <tr>

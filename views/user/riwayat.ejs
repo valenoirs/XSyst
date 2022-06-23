@@ -21,7 +21,7 @@
                             </h6>
                         </td>
                         <td>
-                            <%= e.createdAt.toLocaleString('id') %>
+                            <%= e.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric', month: 'long', year: 'numeric'}) %>
                         </td>
                         <td>
                             <a class="text-danger" style="text-decoration: none;" href="/<%= e.id %>">
