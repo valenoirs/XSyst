@@ -3,6 +3,7 @@ const {v4: uuid} = require('uuid')
 const comparePassword = require('../utils/comparePassword')
 const hashPassword = require('../utils/hashPassword')
 const sendEmail = require('../utils/sendEmail')
+const emailTest = require('../utils/email')
 
 const User = require('../models/user')
 const Penyakit = require('../models/penyakit')
@@ -73,6 +74,10 @@ exports.register = async (req, res) => {
             req.flash('error', 'Email telah terdaftar!')
             return res.redirect('/register')
         }
+
+        const validation = emailTest(email)
+
+        console.log(validation)
 
         if(req.body.password.length < 8){
             console.log('Password length less than 8 characters!')
