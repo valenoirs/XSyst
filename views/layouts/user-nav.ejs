@@ -1,52 +1,91 @@
 <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
-    <div class="container-fluid ps-5 pe-5">
-        <a class="navbar-brand" role="button"><img src="./icon_white.png"> Eye-X-Sys</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">
-            <li class="nav-item">
-            <a class="nav-link" href="/"><i class="bi bi-house-door-fill"></i> Home</a>
+  <div class="container-fluid ps-5 pe-5">
+    <a class="navbar-brand" role="button"
+      ><img src="./icon_white.png" /> Eye-X-Sys</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">
+        <li class="nav-item">
+          <a class="nav-link" href="/"
+            ><i class="bi bi-house-door-fill"></i> Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/diagnosa"
+            ><i class="bi bi-eyedropper"></i> Diagnosa</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/riwayat"
+            ><i class="bi bi-hourglass-split"></i> Riwayat</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex">
+        <% if (locals.idUser) { %>
+        <div class="dropdown">
+          <a
+            class="text-light dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="text-decoration: none"
+          >
+            <i class="bi bi-person-circle"></i> Selamat Datang, <%=
+            locals.namaUser.split(' ')[0] %>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <div class="container pe-3 ps-3">
+                <p>
+                  <%= locals.namaUser %>
+                  <br />
+                  <span class="text-secondary" style="font-size: 0.9rem">
+                    <%= locals.emailUser %>
+                  </span>
+                </p>
+              </div>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/diagnosa"><i class="bi bi-eyedropper"></i> Diagnosa</a>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a
+                class="dropdown-item text-danger"
+                href="/edit"
+                style="text-decoration: none"
+                >Edit</a
+              >
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/riwayat"><i class="bi bi-hourglass-split"></i> Riwayat</a>
+            <li>
+              <a
+                class="dropdown-item text-danger"
+                href="/logout"
+                style="text-decoration: none"
+                >Logout</a
+              >
             </li>
-        </ul>
-        <div class="d-flex">
-            <% if (locals.idUser) { %>
-                <div class="dropdown">
-                    <a class="text-light dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
-                        <i class="bi bi-person-circle"></i> <%= locals.namaUser.split(' ')[0] %>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                        <li>
-                            <div class="container pe-3 ps-3">
-                                <p>
-                                    <%= locals.namaUser %>
-                                    <br>
-                                    <span class="text-secondary" style="font-size: 0.9rem;">
-                                        <%= locals.emailUser %> 
-                                    </span>
-                                </p>
-                            </div>
-                        </li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <a class="dropdown-item text-danger" href="/edit" style="text-decoration: none;">Edit</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-danger" href="/logout" style="text-decoration: none;">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            <% } else { %>
-                <a class="text-light" href="/login" style="text-decoration: none;"><i class="bi bi-box-arrow-in-right"></i> Login</a>
-            <% } %> 
+          </ul>
         </div>
-        </div>
+        <% } else { %>
+        <a class="text-light" href="/login" style="text-decoration: none"
+          ><i class="bi bi-box-arrow-in-right"></i> Login</a
+        >
+        <% } %>
+      </div>
     </div>
+  </div>
 </nav>

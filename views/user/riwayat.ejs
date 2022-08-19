@@ -1,36 +1,76 @@
-<div class="container-fluid" style="padding: 55px 10% 5% 10%;">
-    <div class="row">
-        <h3 class="text-danger mb-3">Riwayat Diagnosa</h3>
-        <h6 class="text-secondary mb-4">A/n. <%= locals.namaUser %></h6>
-        <table class="table table-hover">
-            <thead>
-              <tr class="text-danger">
-                <th scope="col" style="width: 1rem;">No</th>
-                <th scope="col" style="width: 5rem;">Penyakit</th>
-                <th scope="col" style="width: 5rem;">Waktu</th>
-                <th scope="col" style="width: 5rem;">Detail</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% riwayat.forEach((e,i) => { %>
-                    <tr>
-                        <th scope="row"><%= i + 1 %></th>
-                        <td>
-                            <h6>
-                                <%= e.penyakit %>
-                            </h6>
-                        </td>
-                        <td>
-                            <%= e.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric', month: 'long', year: 'numeric'}) %>
-                        </td>
-                        <td>
-                            <a class="text-danger" style="text-decoration: none;" href="/<%= e.id %>">
-                                Detail
-                            </a>
-                        </td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </div>
+<div class="container-fluid" style="padding: 55px 10% 5% 10%">
+  <div class="row">
+    <h3 class="text-danger mb-3">Riwayat Diagnosa</h3>
+    <h6 class="text-secondary mb-4">A/n. <%= locals.namaUser %></h6>
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-danger">
+          <th scope="col" style="width: 1rem">No</th>
+          <th scope="col" style="width: 5rem">Penyakit</th>
+          <th scope="col" style="width: 5rem">Waktu</th>
+          <th scope="col" style="width: 5rem">Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% riwayat.forEach((e,i) => { %>
+        <tr>
+          <th scope="row"><%= i + 1 %></th>
+          <td>
+            <h6>
+              <% if (e.penyakit === "Refraksi Mata") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.alodokter.com/beragam-kelainan-refraksi-mata-yang-perlu-anda-ketahui"
+                >Refraksi Mata</a
+              >
+              <% } else if(e.penyakit === "Katarak") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.halodoc.com/kesehatan/katarak"
+                >Katarak</a
+              >
+              <% } else if(e.penyakit === "Glaukoma") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.alodokter.com/glaukoma"
+                >Glaukoma</a
+              >
+              <% } else if(e.penyakit === "Ablasio") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.alodokter.com/ablasi-retina"
+                >Ablasio</a
+              >
+              <% } else if(e.penyakit === "Konjungtivitis") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.halodoc.com/kesehatan/konjungtivitis"
+                >Konjungtivitis</a
+              >
+              <% } else { %> <%= e.penyakit %> <% } %>
+            </h6>
+          </td>
+          <td>
+            <%= e.createdAt.toLocaleString('id', {weekday: 'long',
+            day:'numeric', month: 'long', year: 'numeric'}) %>
+          </td>
+          <td>
+            <a
+              class="text-danger"
+              style="text-decoration: none"
+              href="/<%= e.id %>"
+            >
+              Detail
+            </a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </div>

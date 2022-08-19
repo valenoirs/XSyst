@@ -3,17 +3,21 @@
     <div class="row">
       <div class="col text-center" data-aos="fade-down">
         <!-- <img src="./icon.png" alt=""> -->
-        <h3 class="text-danger display-4">
-          <% if (locals.namaUser) { %>
-            Selamat Datang, <%= locals.namaUser.split(' ')[0]  %>
-          <% } else { %>
-            Selamat Datang
-          <% } %> 
-        </h3>
-        <p class="text-danger display-6" style="font-size: 1.3rem;">
-            Beauty is in The Eye of The beholder
-        </p>
-        <a class="btn btn-danger mt-5" href="/diagnosa"><i class="bi bi-eyedropper"></i> Diagnosa</a>
+        <h2 class="text-danger display-2"><b>Sistem Pakar</b></h2>
+        <p class="text-danger display-6">
+            Diagnosa Awal Penyakit Mata
+          </p>
+          <a class="btn btn-danger mt-5" href="/diagnosa" style="width: 8rem"><i class="bi bi-eyedropper"></i> Diagnosa</a>
+          <!-- <h3 class="text-danger display-6">
+            <% if (locals.namaUser) { %>
+              Selamat Datang, <%= locals.namaUser.split(' ')[0]  %>
+            <% } else { %>
+              Selamat Datang
+            <% } %> 
+          </h3>
+          <p class="text-danger display-6" style="font-size: 1.3rem;">
+              Beauty is in The Eye of The beholder
+          </p> -->
       </div>
     </div>
   </div>

@@ -1,0 +1,52 @@
+<div class="container" style="padding: 55px 10% 5% 10%">
+  <div class="row justify-content-center">
+    <div class="row mt-5">
+      <div class="col text-center">
+        <h4 class="text-secondary"><%= pertanyaan %></h4>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <div class="col-3 text-center">
+        <% if (gejala === "G20") { %>
+        <form action="/diagnosa" method="post">
+          <button type="submit" class="btn btn-danger" style="width: 8rem">
+            Ya
+          </button>
+        </form>
+        <% } else { %>
+        <form action="/pertanyaan" method="post">
+          <input type="hidden" name="ya" value="true" />
+          <input type="hidden" name="gejala" value="<%= gejala %>" />
+          <button type="submit" class="btn btn-danger" style="width: 8rem">
+            Ya
+          </button>
+        </form>
+        <%}%>
+      </div>
+      <div class="col-3 text-center">
+        <% if (gejala === "G20") { %>
+        <form action="/diagnosa" method="post">
+          <button
+            type="submit"
+            class="btn btn-outline-danger"
+            style="width: 8rem"
+          >
+            Tidak
+          </button>
+        </form>
+        <% } else { %>
+        <form action="/pertanyaan" method="post">
+          <input type="hidden" name="gejala" value="<%= gejala %>" />
+          <button
+            type="submit"
+            class="btn btn-outline-danger"
+            style="width: 8rem"
+          >
+            Tidak
+          </button>
+        </form>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</div>

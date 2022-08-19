@@ -1,255 +1,35 @@
-<div class="container-fluid" style="padding: 55px 10% 5% 10%;">
+<div class="container-fluid" style="padding: 55px 10% 5% 10%">
   <div class="row">
-    <h3 class="text-danger mb-3">Mulai Diagnosa</h3>
-    <h6 class="text-secondary mb-5">Jawablah pertanyaan di bawah ini sesuai dengan kondisi anda.</h6>
-    <form method="POST" action="/diagnosa" class="">
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">1. Apakah penglihatan anda terasa buram?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G01" value="" id="success-outlined1" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined1" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G01" value="G01" id="danger-outlined1" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined1" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">2. Apakah mata anda mudah tegang dan lelah?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G02" value="" id="success-outlined2" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined2" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G02" value="G02" id="danger-outlined2" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined2" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">3. Apakah kepala anda sakit?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G03" value="" id="success-outlined3" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined3" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G03" value="G03" id="danger-outlined3" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined3" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">4. Apakah anda merakasakan nyeri atau sakit di bagian mata?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G04" value="" id="success-outlined4" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined4" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G04" value="G04" id="danger-outlined4" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined4" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">5. Apakah benda dengan jarak yang jauh terlihat kabur, namun nampak jelas jika dilihat dari dekat?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G05" value="" id="success-outlined5" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined5" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G05" value="G05" id="danger-outlined5" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined5" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">6. Apakah benda dengan jarak yang dekat terlihat kabur, namun tampak jelas jika dilihat dari jauh?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G06" value="" id="success-outlined6" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined6" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G06" value="G06" id="danger-outlined6" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined6" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">7. Apakah anda kesulitan saat membaca?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G07" value="" id="success-outlined7" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined7" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G07" value="G07" id="danger-outlined7" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined7" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">8. Apakah anda kesulitan membaca tulisan dengan huruf yang dicetak halus atau kecil?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G08" value="" id="success-outlined8" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined8" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G08" value="G08" id="danger-outlined8" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined8" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">9. Apakah usia anda diatas 40 tahun?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G09" value="" id="success-outlined9" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined9" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G09" value="G09" id="danger-outlined9" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined9" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">10. Apakah anda kesulitan melihat pada malam hari?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G10" value="" id="success-outlined10" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined10" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G10" value="G10" id="danger-outlined10" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined10" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">11. Apakah penglihatan anda buram saat melihat benda baik dengan jarak yang dekat maupun jauh?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G11" value="" id="success-outlined11" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined11" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G11" value="G11" id="danger-outlined11" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined11" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">12. Apakah penglihatan anda kurang jelas seperti terdapat kabut yang menhalangi?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G12" value="" id="success-outlined12" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined12" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G12" value="G12" id="danger-outlined12" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined12" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">13. Apakah anda sering mengganti ukuran kacamata?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G13" value="" id="success-outlined13" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined13" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G13" value="G13" id="danger-outlined13" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined13" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">14. Apakah nampak seperti pelangi yang melingkar saat anda melihat lampu atau sumber cahaya</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G14" value="" id="success-outlined14" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined14" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G14" value="G14" id="danger-outlined14" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined14" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">15. Apakah radius penglihatan anda menyempit sehingga tidak dapat melihat objek sama sekali?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G15" value="" id="success-outlined15" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined15" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G15" value="G15" id="danger-outlined15" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined15" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">16. Apakah anda merasa mual atau ingin muntah?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G16" value="" id="success-outlined16" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined16" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G16" value="G16" id="danger-outlined16" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined16" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">17. Apakah anda kehilangan fungsi penglihatan pada salah satu mata anda?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G17" value="" id="success-outlined17" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined17" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G17" value="G17" id="danger-outlined17" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined17" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">18. Apakah nampak bentuk-bentuk tidak wajar yang melayang atau kilatan cahaya?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G18" value="" id="success-outlined18" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined18" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G18" value="G18" id="danger-outlined18" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined18" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">19. Apakah mata anda terasa gatal dan berair?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G19" value="" id="success-outlined19" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined19" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G19" value="G19" id="danger-outlined19" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined19" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="flexSwitchCheckDefault" class="form-label">20. Apakah mata anda peka terhadap cahaya nampak?</label>
-          <div class="form-check mt-2">
-            <div class="input-group">
-              <input type="radio" class="btn-check" name="G20" value="" id="success-outlined20" autocomplete="off" checked>
-              <label class="btn btn-outline-danger" for="success-outlined20" style="width: 75px; height: 26px; padding: 2px; border-radius: 5px 0 0 5px; font-size: 0.9rem;">Tidak</label>
-  
-              <input type="radio" class="btn-check" name="G20" value="G20" id="danger-outlined20" autocomplete="off">
-              <label class="btn btn-outline-danger" for="danger-outlined20" style="width: 75px; height: 26px; padding: 2px; border-radius: 0 5px 5px 0; font-size: 0.9rem;">Ya</label>
-            </div>
-          </div>
-        </div>
-        <br>
-          <% if (!locals.namaUser) { %>
-            <p class="text-secondary" style="font-size: 1rem;">*Riwayat diagnosa <span class="text-danger">tidak</span> akan disimpan, harap lakukan login untuk menyimpan riwayat.<br>Tekan tombol submit jika jabawan anda sudah benar</p>
-            <% } else { %>
-              <p class="text-secondary" style="font-size: 1rem;">*Tekan tombol submit jika jabawan anda sudah benar</p>
-          <% } %> 
-          <button type="submit" class="btn btn-danger ms-4">Submit</button>
-      </form>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <h3 class="text-danger mb-3">Mulai Diagnosa</h3>
+        <h6 class="text-secondary mb-3">
+          Jawablah pertanyaan di bawah ini sesuai dengan kondisi anda.
+        </h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <% if (!locals.namaUser) { %>
+        <p class="text-secondary" style="font-size: 1rem">
+          *Riwayat diagnosa <span class="text-danger">tidak</span> akan
+          disimpan, harap lakukan login untuk menyimpan riwayat.<br />Tekan
+          tombol <span class="text-danger">lanjut</span> untuk melanjutkan.
+        </p>
+        <% } else { %>
+        <p class="text-secondary" style="font-size: 1rem">
+          Tekan tombol <span class="text-danger">lanjut</span> untuk
+          melanjutkan.
+        </p>
+        <% } %>
+        <a
+          type="submit"
+          class="btn btn-danger ms-4"
+          href="/pertanyaan"
+          style="width: 8rem"
+          >Lanjut</a
+        >
+      </div>
+    </div>
   </div>
 </div>
