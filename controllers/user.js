@@ -399,7 +399,6 @@ exports.pertanyaan = async (req, res) => {
     if (!req.session.gejalaUser) {
       req.session.gejalaUser = [];
     }
-    console.log(req.body);
 
     let { ya, gejala } = req.body;
 
