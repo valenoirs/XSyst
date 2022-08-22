@@ -17,12 +17,33 @@
           <th scope="row"><%= i + 1 %></th>
           <td>
             <h6>
-              <% if (e.penyakit === "Refraksi Mata") { %>
+              <% if(e.penyakit === "Rabun Jauh") { %>
               <a
                 class="text-danger"
                 target="_blank"
-                href="https://www.alodokter.com/beragam-kelainan-refraksi-mata-yang-perlu-anda-ketahui"
-                >Refraksi Mata</a
+                href="https://www.alodokter.com/rabun-jauh"
+                >Rabun Jauh</a
+              >
+              <% } else if(e.penyakit === "Rabun Dekat") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.halodoc.com/kesehatan/rabun-dekat"
+                >Rabun Dekat</a
+              >
+              <% } else if(e.penyakit === "Silinder") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://hellosehat.com/mata/gangguan-penglihatan/mata-silinder/"
+                >Silinder</a
+              >
+              <% } else if(e.penyakit === "Mata Tua") { %>
+              <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.alodokter.com/presbiopi"
+                >Mata Tua</a
               >
               <% } else if(e.penyakit === "Katarak") { %>
               <a

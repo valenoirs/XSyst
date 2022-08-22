@@ -1,39 +1,104 @@
-<div class="container-fluid" style="padding: 55px 10% 5% 10%;">
-    <div class="row">
-        <h3 class="text-danger mb-3">Hasil Diagnosa</h3>
-        <h6 class="text-secondary"><%= detail.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric', month: 'long', year: 'numeric'}) %></h6>
-        <h6 class="text-secondary mb-5"><%= detail.createdAt.toLocaleString('id', {hour: '2-digit', minute: '2-digit'}) %></h6>
-        <table class="table table-bordered border-danger">
-            <tbody>
-                <tr>
-                    <th scope="row" style="width: 200px;">Nama</th>
-                    <td><%= locals.namaUser %></td>
-                </tr>
-                <tr>
-                    <th scope="row">Penyakit</th>
-                    <td class="text-danger"><%= detail.penyakit %></td>
-                </tr>
-                <tr>
-                    <th scope="row">Solusi</th>
-                    <td><%= detail.solusi %></td>
-                </tr>
-                <tr>
-                    <th scope="row">Gejala</th>
-                    <td>
-                        <% detail.gejala.forEach((gejala, i) => { %>
-                            <p><%= i + 1 %>. <%= gejala %></p>
-                        <% }) %>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Pencegahan</th>
-                    <td>
-                        <% detail.pencegahan.forEach((pencegahan, i) => { %>
-                            <p><%= i + 1 %>. <%= pencegahan %></p>
-                        <% }) %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="container-fluid" style="padding: 55px 10% 5% 10%">
+  <div class="row">
+    <h3 class="text-danger mb-3">Hasil Diagnosa</h3>
+    <h6 class="text-secondary">
+      <%= detail.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric',
+      month: 'long', year: 'numeric'}) %>
+    </h6>
+    <h6 class="text-secondary mb-5">
+      <%= detail.createdAt.toLocaleString('id', {hour: '2-digit', minute:
+      '2-digit'}) %>
+    </h6>
+    <table class="table table-bordered border-danger">
+      <tbody>
+        <tr>
+          <th scope="row" style="width: 200px">Nama</th>
+          <td><%= locals.namaUser %></td>
+        </tr>
+        <tr>
+          <th scope="row">Penyakit</th>
+          <td class="text-danger">
+            <h6>
+                <% if(detail.penyakit === "Rabun Jauh") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.alodokter.com/rabun-jauh"
+                  >Rabun Jauh</a
+                >
+                <% } else if(detail.penyakit === "Rabun Dekat") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.halodoc.com/kesehatan/rabun-dekat"
+                  >Rabun Dekat</a
+                >
+                <% } else if(detail.penyakit === "Silinder") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://hellosehat.com/mata/gangguan-penglihatan/mata-silinder/"
+                  >Silinder</a
+                >
+                <% } else if(detail.penyakit === "Mata Tua") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.alodokter.com/presbiopi"
+                  >Mata Tua</a
+                >
+                <% } else if(detail.penyakit === "Katarak") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.halodoc.com/kesehatan/katarak"
+                  >Katarak</a
+                >
+                <% } else if(detail.penyakit === "Glaukoma") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.alodokter.com/glaukoma"
+                  >Glaukoma</a
+                >
+                <% } else if(detail.penyakit === "Ablasio") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.alodokter.com/ablasi-retina"
+                  >Ablasio</a
+                >
+                <% } else if(detail.penyakit === "Konjungtivitis") { %>
+                <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.halodoc.com/kesehatan/konjungtivitis"
+                  >Konjungtivitis</a
+                >
+                <% } else { %> <%= detail.penyakit %> <% } %>
+        </td>
+        </tr>
+        <tr>
+          <th scope="row">Solusi</th>
+          <td><%= detail.solusi %></td>
+        </tr>
+        <tr>
+          <th scope="row">Gejala</th>
+          <td>
+            <% detail.gejala.forEach((gejala, i) => { %>
+            <p><%= i + 1 %>. <%= gejala %></p>
+            <% }) %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Pencegahan</th>
+          <td>
+            <% detail.pencegahan.forEach((pencegahan, i) => { %>
+            <p><%= i + 1 %>. <%= pencegahan %></p>
+            <% }) %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
