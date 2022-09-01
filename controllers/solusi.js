@@ -10,25 +10,25 @@ module.exports.solusiAdd = async (req, res) => {
       id: uuid(),
       rules: ["G01", "G02", "G03", "G05", "G07", "G08"],
       keterangan:
-        "Pengobatan pada miopia dapat dipilih sesuai dengan usia, tingkat keparahan, serta kondisi pengidap. Jenis penanganan yang dilakukan bagi rabun jauh dapat berupa Operasi dengan sinar laser, Implantasi lensa buatan, Penggunaan kacamata atau lensa kontak.",
+        "Pengobatan pada miopi dapat dipilih sesuai dengan usia, tingkat keparahan, serta kondisi pengidap. Jenis penanganan yang dilakukan bagi rabun jauh dapat berupa Operasi dengan sinar laser, Implantasi lensa buatan, Penggunaan kacamata atau lensa kontak.",
     },
     {
       id: uuid(),
       rules: ["G01", "G02", "G03", "G06", "G07"],
       keterangan:
-        "Pengobatan pada miopia dapat dipilih sesuai dengan usia, tingkat keparahan, serta kondisi pengidap. Jenis penanganan yang dilakukan bagi rabun jauh dapat berupa Operasi dengan sinar laser, Implantasi lensa buatan, Penggunaan kacamata atau lensa kontak.",
+        "Lensa kontak digunakan untuk mengatasi penyakit ini serta mempunyai fungsi sama seperti kacamata, juga ada Operasi yang paling dapat diandalkan untuk mengatasi kondisi ini adalah operasi laser. Pengidap yang telah menjalani operas laser, tidak perlu dilakukan rawat inap di rumah sakit.",
     },
     {
       id: uuid(),
       rules: ["G01", "G03", "G08"],
       keterangan:
-        "Pengobatan pada miopia dapat dipilih sesuai dengan usia, tingkat keparahan, serta kondisi pengidap. Jenis penanganan yang dilakukan bagi rabun jauh dapat berupa Operasi dengan sinar laser, Implantasi lensa buatan, Penggunaan kacamata atau lensa kontak.",
+        "Menggunakan lensa korektif yang dipasang pada kacamata atau lensa kontak membantu menyesuaikan lengkungan kornea atau lensa yang tidak rata. Selain itu Operasi refraktif dapat mengatasi mata silinder dengan memberbaiki bentuk permukaan mata Anda.",
     },
     {
       id: uuid(),
       rules: ["G01", "G05", "G06", "G07", "G08", "G09"],
       keterangan:
-        "Pengobatan pada miopia dapat dipilih sesuai dengan usia, tingkat keparahan, serta kondisi pengidap. Jenis penanganan yang dilakukan bagi rabun jauh dapat berupa Operasi dengan sinar laser, Implantasi lensa buatan, Penggunaan kacamata atau lensa kontak.",
+        "Lakukan pemeriksaan ke dokter mata jika penglihatan kabur ketika membaca atau melakukan aktivitas normal lain. Dokter akan menjalankan pemeriksaan mata untuk menentukan apakah Anda mengalami presbiopi atau gangguan mata yang lain.",
     },
     {
       id: uuid(),
