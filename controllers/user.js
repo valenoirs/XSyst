@@ -125,15 +125,9 @@ exports.diagnosa = async (req, res) => {
       req.session.gejalaUser.push(gejalaInput);
     }
 
-    console.log("GEJALA INPUT:\n", gejalaInput);
-    console.log("GEJALA SESSION:\n", req.session.gejalaUser);
-    console.log("BODY:\n", req.body);
-
     const gejala = req.session.gejalaUser;
     const penyakit = await Penyakit.find();
     const solusi = await Solusi.find();
-
-    console.log("GEJALA AFTER :\n", gejala);
 
     if (req.body.length === 0) {
       console.error("diagnosa-error", error);
