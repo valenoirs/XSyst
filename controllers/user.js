@@ -125,7 +125,8 @@ exports.diagnosa = async (req, res) => {
       req.session.gejalaUser.push(gejalaInput);
     }
 
-    const gejala = req.session.gejalaUser;
+    // const gejala = req.session.gejalaUser;
+    const gejala = req.body.gejalaUser;
     const penyakit = await Penyakit.find();
     const solusi = await Solusi.find();
 
@@ -142,14 +143,47 @@ exports.diagnosa = async (req, res) => {
       solusi: "Tidak terdeteksi",
       gejala: [],
       pencegahan: [],
+      persentase: [],
     };
 
     for (let key in penyakit) {
+      // LUCKY CUSTOM ALGORITHM
+      let counter = 0;
+
+      // console.log(penyakit[key].nama);
+
+      penyakit[key].rules.forEach((element, index) => {
+        if (element === gejala[index]) {
+          counter += 1;
+        }
+      });
+
+      const percentage = (counter / penyakit[key].rules.length) * 100;
+
+      riwayat["persentase"].push({
+        nama: penyakit[key].nama,
+        persentase: percentage,
+      });
+
+      // console.log(percentage.toString().slice(0, 4) + "%");
+
+      const highestPenyakitScore = riwayat["persentase"].sort((a, b) => {
+        return a.persentase + b.persentase;
+      });
+
+      if (highestPenyakitScore[0].persentase > 65) {
+      }
+
+      // DEFAULT
       if (gejala.join("") === penyakit[key].rules.join("")) {
         console.log(`Sakit = ${penyakit[key].nama}`);
         for (let key in solusi) {
           if (gejala.join("") === solusi[key].rules.join("")) {
             console.log(`Solusi = ${solusi[key].keterangan}`);
+
+            // riwayat["persentase"] = arraySementara.sort((a, b) => {
+            //   return a - b;
+            // });
 
             riwayat["penyakit"] = penyakit[key].nama;
             riwayat["solusi"] = solusi[key].keterangan;

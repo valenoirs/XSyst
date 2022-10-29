@@ -16,6 +16,14 @@
           <td><%= locals.namaUser %></td>
         </tr>
         <tr>
+          <th scope="row">Kemungkinan</th>
+          <td class="text-danger">
+            <% detail.persentase.sort((a, b) => {return a.persentase - b.persentase}).forEach(penyakit => { %>
+            <p><%= penyakit.nama %> : <%= penyakit.persentase %></p>
+            <% }) %>
+          </td>
+        </tr>
+        <tr>
           <th scope="row">Penyakit</th>
           <td class="text-danger">
             <h6>
