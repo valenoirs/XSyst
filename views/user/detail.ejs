@@ -2,11 +2,11 @@
   <div class="row">
     <h3 class="text-danger mb-3">Hasil Diagnosa</h3>
     <h6 class="text-secondary">
-      <%= detail.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric',
+      <i class="bi bi-calendar-check"></i> <%= detail.createdAt.toLocaleString('id', {weekday: 'long', day:'numeric',
       month: 'long', year: 'numeric'}) %>
     </h6>
     <h6 class="text-secondary mb-5">
-      <%= detail.createdAt.toLocaleString('id', {hour: '2-digit', minute:
+      <i class="bi bi-clock"></i> <%= detail.createdAt.toLocaleString('id', {hour: '2-digit', minute:
       '2-digit'}) %>
     </h6>
     <table class="table table-bordered border-danger">
@@ -18,14 +18,14 @@
         <tr>
           <th scope="row">Kemungkinan</th>
           <td class="text-danger">
-            <% detail.persentase.sort((a, b) => {return a.persentase - b.persentase}).forEach(penyakit => { %>
-            <p><%= penyakit.nama %> : <%= penyakit.persentase %></p>
+            <% detail.persentase.forEach(penyakit => { %>
+            <p><%= penyakit.nama %> : <%= penyakit.persentase.toString().slice(0, 4) %>%</p>
             <% }) %>
           </td>
         </tr>
         <tr>
           <th scope="row">Penyakit</th>
-          <td class="text-danger">
+          <td>
             <h6>
                 <% if(detail.penyakit === "Rabun Jauh") { %>
                 <a
@@ -33,56 +33,56 @@
                   target="_blank"
                   href="https://www.alodokter.com/rabun-jauh"
                   >Rabun Jauh</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Rabun Dekat") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://www.halodoc.com/kesehatan/rabun-dekat"
                   >Rabun Dekat</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Silinder") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://hellosehat.com/mata/gangguan-penglihatan/mata-silinder/"
                   >Silinder</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Mata Tua") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://www.alodokter.com/presbiopi"
                   >Mata Tua</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Katarak") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://www.halodoc.com/kesehatan/katarak"
                   >Katarak</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Glaukoma") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://www.alodokter.com/glaukoma"
                   >Glaukoma</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Ablasio") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://www.alodokter.com/ablasi-retina"
                   >Ablasio</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else if(detail.penyakit === "Konjungtivitis") { %>
                 <a
                   class="text-danger"
                   target="_blank"
                   href="https://www.halodoc.com/kesehatan/konjungtivitis"
                   >Konjungtivitis</a
-                >
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
                 <% } else { %> <%= detail.penyakit %> <% } %>
         </td>
         </tr>

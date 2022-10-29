@@ -118,15 +118,13 @@ exports.register = async (req, res) => {
 
 exports.diagnosa = async (req, res) => {
   try {
-    // const gejala = Object.values(req.body).filter((e) => e !== "");
     const { ya, gejalaInput } = req.body;
 
     if (ya) {
       req.session.gejalaUser.push(gejalaInput);
     }
 
-    // const gejala = req.session.gejalaUser;
-    const gejala = req.body.gejalaUser;
+    const gejala = req.session.gejalaUser;
     const penyakit = await Penyakit.find();
     const solusi = await Solusi.find();
 
@@ -149,45 +147,49 @@ exports.diagnosa = async (req, res) => {
     for (let key in penyakit) {
       // LUCKY CUSTOM ALGORITHM
       let counter = 0;
+      let highestPenyakitScore = [{ persentase: 0 }];
 
-      // console.log(penyakit[key].nama);
-
-      penyakit[key].rules.forEach((element, index) => {
-        if (element === gejala[index]) {
-          counter += 1;
-        }
+      penyakit[key].rules.forEach((elementPenyakit) => {
+        gejala.forEach((elementGejala) => {
+          if (elementPenyakit === elementGejala) {
+            counter += 1;
+          }
+        });
       });
 
-      const percentage = (counter / penyakit[key].rules.length) * 100;
+      const persentase = (counter / penyakit[key].rules.length) * 100;
 
       riwayat["persentase"].push({
         nama: penyakit[key].nama,
-        persentase: percentage,
+        persentase,
       });
 
-      // console.log(percentage.toString().slice(0, 4) + "%");
-
-      const highestPenyakitScore = riwayat["persentase"].sort((a, b) => {
-        return a.persentase + b.persentase;
-      });
-
-      if (highestPenyakitScore[0].persentase > 65) {
+      if (riwayat["persentase"].length === 8) {
+        highestPenyakitScore = riwayat["persentase"]
+          .sort((a, b) => {
+            return a.persentase - b.persentase;
+          })
+          .reverse();
       }
 
-      // DEFAULT
-      if (gejala.join("") === penyakit[key].rules.join("")) {
+      if (
+        highestPenyakitScore[0].persentase > 64 &&
+        highestPenyakitScore.length === 8
+      ) {
         console.log(`Sakit = ${penyakit[key].nama}`);
-        for (let key in solusi) {
-          if (gejala.join("") === solusi[key].rules.join("")) {
-            console.log(`Solusi = ${solusi[key].keterangan}`);
+        for (let keySolusi in solusi) {
+          console.log(solusi[keySolusi].penyakit);
+          if (highestPenyakitScore[0].nama === solusi[keySolusi].penyakit) {
+            console.log(`Solusi = ${solusi[keySolusi].keterangan}`);
 
-            // riwayat["persentase"] = arraySementara.sort((a, b) => {
-            //   return a - b;
-            // });
+            const realGejala = await Penyakit.findOne(
+              { nama: highestPenyakitScore[0].nama },
+              { gejala: 1 }
+            );
 
-            riwayat["penyakit"] = penyakit[key].nama;
-            riwayat["solusi"] = solusi[key].keterangan;
-            riwayat["gejala"] = penyakit[key].gejala;
+            riwayat["penyakit"] = highestPenyakitScore[0].nama;
+            riwayat["solusi"] = solusi[keySolusi].keterangan;
+            riwayat["gejala"] = realGejala.gejala;
             riwayat["pencegahan"] = penyakit[key].pencegahan;
 
             if (req.session.idUser) {
@@ -459,7 +461,6 @@ exports.pertanyaan = async (req, res) => {
       }
     });
 
-    console.log(req.session.gejalaUser);
     return res.redirect("/pertanyaan");
   } catch (error) {
     console.error("edit-error", error);

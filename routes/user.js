@@ -144,6 +144,15 @@ router.get("/:id", async (req, res) => {
     res.redirect("/login");
   } else {
     const detail = await Riwayat.findOne({ id: req.params.id });
+
+    if (!detail) {
+      return res
+        .status(404)
+        .send(
+          '<h2 style="color: rgba(220, 53, 69, 0.9);margin-left: 30%; margin-top: 10rem;">404: Page Not Found</h2>'
+        );
+    }
+
     res.render("user/detail", {
       layout: "layouts/user",
       title: "Eye X Sys",

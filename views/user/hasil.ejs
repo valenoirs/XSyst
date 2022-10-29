@@ -1,7 +1,7 @@
 <div class="container-fluid" style="padding: 55px 10% 5% 10%">
   <div class="row">
     <h3 class="text-danger mb-3">Hasil Diagnosa</h3>
-    <h6 class="text-secondary mb-5"><%= new Date().toLocaleString('id') %></h6>
+    <h6 class="text-secondary mb-5"><i class="bi bi-calendar-check"> </i><%= new Date().toLocaleString('id') %></h6>
     <table class="table table-bordered border-danger">
       <tbody>
         <% if (locals.namaUser) { %>
@@ -13,8 +13,11 @@
         <tr>
           <th scope="row">Kemungkinan</th>
           <td class="text-danger">
-            <% riwayat.persentase.sort((a, b) => a - b).forEach(penyakit => { %>
-            <p><%= penyakit.nama %> : <%= penyakit.persentase %></p>
+            <% riwayat.persentase.forEach(penyakit => { %>
+            <p>
+              <%= penyakit.nama %> : <%=
+              penyakit.persentase.toString().slice(0,4) %>%
+            </p>
             <% }) %>
           </td>
         </tr>

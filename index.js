@@ -88,8 +88,11 @@ app.get("/ping", (req, res, next) => {
 });
 
 app.use("/", (req, res) => {
-  res.status(404);
-  res.send("<h1>404</h1>");
+  return res
+    .status(404)
+    .send(
+      '<h2 style="color: rgba(220, 53, 69, 0.9);margin-left: 30%; margin-top: 10rem;">404: Page Not Found</h2>'
+    );
 });
 
 app.listen(port, () => {

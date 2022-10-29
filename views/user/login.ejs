@@ -6,12 +6,12 @@
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <div id="emailHelp" class="form-text">Kami tidak akan memberitahukan email anda ke siapapun.</div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
-          <p class="form-text">Don't have account? <a class="text-danger" href="/register">Register</a>. or forget password? <a class="text-danger" href="/recovery">Recover</a></p>
+          <input type="password" class="form-control" id="password" name="password" minlength="8" required>
+          <p class="form-text">Belum punya akun? <a class="text-danger" href="/register">Register</a>. atau lupa password anda? <a class="text-danger" href="/recovery">Recover</a></p>
         </div>
         <button type="submit" class="btn btn-danger">Login</button>
       </form>
