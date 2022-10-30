@@ -118,10 +118,13 @@ exports.register = async (req, res) => {
 
 exports.diagnosa = async (req, res) => {
   try {
-    const { ya, gejalaInput } = req.body;
+    const { ya } = req.body;
 
     if (ya) {
-      req.session.gejalaUser.push(gejalaInput);
+      req.session.gejalaUser.push(req.session.gejala);
+      req.session.jawabanUser.push(req.session.pertanyaan + " Ya");
+    } else {
+      req.session.jawabanUser.push(req.session.pertanyaan + " Tidak");
     }
 
     const gejala = req.session.gejalaUser;
@@ -139,8 +142,9 @@ exports.diagnosa = async (req, res) => {
       idUser: req.session.idUser,
       penyakit: "Tidak ada penyakit dengan kemungiknan diatas 65%.",
       solusi: "Tidak terdeteksi, tetap jaga mata anda ya.",
-      gejala: [],
-      pencegahan: [],
+      jawaban: req.session.jawabanUser,
+      gejala: ["-"],
+      pencegahan: ["-"],
       persentase: [],
     };
 
@@ -182,15 +186,15 @@ exports.diagnosa = async (req, res) => {
           if (highestPenyakitScore[0].nama === solusi[keySolusi].penyakit) {
             console.log(`Solusi = ${solusi[keySolusi].keterangan}`);
 
-            const realGejala = await Penyakit.findOne(
+            const realPenyakit = await Penyakit.findOne(
               { nama: highestPenyakitScore[0].nama },
-              { gejala: 1 }
+              { gejala: 1, pencegahan: 1 }
             );
 
             riwayat["penyakit"] = highestPenyakitScore[0].nama;
             riwayat["solusi"] = solusi[keySolusi].keterangan;
-            riwayat["gejala"] = realGejala.gejala;
-            riwayat["pencegahan"] = penyakit[key].pencegahan;
+            riwayat["gejala"] = realPenyakit.gejala;
+            riwayat["pencegahan"] = realPenyakit.pencegahan;
 
             if (req.session.idUser) {
               const newRiwayat = new Riwayat(riwayat);
@@ -198,6 +202,11 @@ exports.diagnosa = async (req, res) => {
 
               console.log(`${req.session.namaUser}: Riwayat baru`);
             }
+
+            delete req.session.gejalaUser;
+            delete req.session.pertanyaan;
+            delete req.session.jawabanUser;
+            delete req.session.gejala;
 
             return res.render("user/hasil", {
               layout: "layouts/user",
@@ -216,6 +225,11 @@ exports.diagnosa = async (req, res) => {
 
       console.log(`${req.session.namaUser}: Riwayat baru`);
     }
+
+    delete req.session.gejalaUser;
+    delete req.session.pertanyaan;
+    delete req.session.jawabanUser;
+    delete req.session.gejala;
 
     return res.render("user/hasil", {
       layout: "layouts/user",
@@ -438,12 +452,16 @@ exports.pertanyaan = async (req, res) => {
 
     if (!req.session.gejalaUser) {
       req.session.gejalaUser = [];
+      req.session.jawabanUser = [];
     }
 
     let { ya, gejala } = req.body;
 
     if (ya) {
       req.session.gejalaUser.push(gejala);
+      req.session.jawabanUser.push(req.session.pertanyaan + " Ya");
+    } else {
+      req.session.jawabanUser.push(req.session.pertanyaan + " Tidak");
     }
 
     if (!gejala) {

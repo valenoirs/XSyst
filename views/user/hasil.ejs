@@ -105,6 +105,18 @@
             <% }) %>
           </td>
         </tr>
+        <tr>
+          <th scope="row">Jawaban Anda</th>
+          <td>
+            <% riwayat.jawaban.forEach((jawaban, i) => { %>
+              <% if (jawaban.slice(jawaban.length - 2, jawaban.length) === "Ya") { %>
+                <p class="text-danger"><%= i + 1 %>. <%= jawaban %></p>
+              <% } else {%>
+                <p><%= i + 1 %>. <%= jawaban %></p>
+              <% } %>
+            <% }) %>
+          </td>
+        </tr>
       </tbody>
     </table>
     <span class="fs-6 fw-light fst-italic">*Tidak yakin dengan hasil atau jawaban anda, silahkan lakukan <a class="text-danger" href="/diagnosa">Diagnosa</a> lagi atau kunjungi <sapn class="text-danger">dokter</sapn> terdekat.</span>

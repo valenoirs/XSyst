@@ -7,6 +7,7 @@ const Riwayat = mongoose.model(
       id: { type: String, required: true, unique: true },
       idUser: { type: String, required: true },
       penyakit: { type: String, required: true },
+      jawaban: { type: Array, required: true, default: [] },
       persentase: { type: Array, required: true, default: [] },
       solusi: { type: String, required: true },
       gejala: { type: Array, required: true, default: [] },

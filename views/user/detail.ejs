@@ -19,7 +19,7 @@
           <th scope="row">Kemungkinan</th>
           <td class="text-danger">
             <% detail.persentase.forEach(penyakit => { %>
-            <p><%= penyakit.nama %> : <%= penyakit.persentase.toString().slice(0, 4) %>%</p>
+              <p><%= penyakit.nama %> : <%= penyakit.persentase.toString().slice(0, 4) %>%</p>
             <% }) %>
           </td>
         </tr>
@@ -93,16 +93,36 @@
         <tr>
           <th scope="row">Gejala</th>
           <td>
-            <% detail.gejala.forEach((gejala, i) => { %>
-            <p><%= i + 1 %>. <%= gejala %></p>
-            <% }) %>
+            <% if (detail.gejala.length === 1) { %>
+              -
+            <% } else {%>
+              <% detail.gejala.forEach((gejala, i) => { %>
+                <p><%= i + 1 %>. <%= gejala %></p>
+              <% }) %>
+            <% } %>
           </td>
         </tr>
         <tr>
           <th scope="row">Pencegahan</th>
           <td>
-            <% detail.pencegahan.forEach((pencegahan, i) => { %>
-            <p><%= i + 1 %>. <%= pencegahan %></p>
+            <% if (detail.pencegahan.length === 1) { %>
+              -
+            <% } else {%>
+              <% detail.pencegahan.forEach((pencegahan, i) => { %>
+                <p><%= i + 1 %>. <%= pencegahan %></p>
+              <% }) %>
+            <% } %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Jawaban Anda</th>
+          <td>
+            <% detail.jawaban.forEach((jawaban, i) => { %>
+              <% if (jawaban.slice(jawaban.length - 2, jawaban.length) === "Ya") { %>
+                <p class="text-danger"><%= i + 1 %>. <%= jawaban %></p>
+              <% } else {%>
+                <p><%= i + 1 %>. <%= jawaban %></p>
+              <% } %>
             <% }) %>
           </td>
         </tr>
