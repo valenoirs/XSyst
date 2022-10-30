@@ -141,7 +141,7 @@ exports.diagnosa = async (req, res) => {
       id: uuid(),
       idUser: req.session.idUser,
       penyakit: "Tidak ada penyakit dengan kemungiknan diatas 65%",
-      solusi: "Tidak terdeteksi, tetap jaga mata anda ya.",
+      solusi: "Tidak terdeteksi, tetap jaga kesehatan mata anda ya.",
       jawaban: req.session.jawabanUser,
       gejala: ["-"],
       pencegahan: ["-"],
