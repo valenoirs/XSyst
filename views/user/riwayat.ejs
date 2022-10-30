@@ -73,7 +73,11 @@
                 href="https://www.halodoc.com/kesehatan/konjungtivitis"
                 >Konjungtivitis</a
               >
-              <% } else { %> <%= e.penyakit %> <% } %>
+              <% } else if (e.penyakit === "Tidak ada penyakit dengan kemungiknan diatas 65%.") { %>
+                Tidak Terdeteksi
+              <% } else { %>
+                Tidak Terdeteksi
+              <% } %>
             </h6>
           </td>
           <td>

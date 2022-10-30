@@ -92,17 +92,25 @@
         <tr>
           <th scope="row">Gejala</th>
           <td>
-            <% riwayat.gejala.forEach((gejala, i) => { %>
-            <p><%= i + 1 %>. <%= gejala %></p>
-            <% }) %>
+            <% if (riwayat.gejala.length === 1) { %>
+              -
+            <% } else {%>
+              <% riwayat.gejala.forEach((gejala, i) => { %>
+                <p><%= i + 1 %>. <%= gejala %></p>
+              <% }) %>
+            <% } %>
           </td>
         </tr>
         <tr>
           <th scope="row">Pencegahan</th>
           <td>
-            <% riwayat.pencegahan.forEach((pencegahan, i) => { %>
-            <p><%= i + 1 %>. <%= pencegahan %></p>
-            <% }) %>
+            <% if (riwayat.pencegahan.length === 1) { %>
+              -
+            <% } else {%>
+              <% riwayat.pencegahan.forEach((pencegahan, i) => { %>
+                <p><%= i + 1 %>. <%= pencegahan %></p>
+              <% }) %>
+            <% } %>
           </td>
         </tr>
         <tr>

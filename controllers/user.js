@@ -140,7 +140,7 @@ exports.diagnosa = async (req, res) => {
     const riwayat = {
       id: uuid(),
       idUser: req.session.idUser,
-      penyakit: "Tidak ada penyakit dengan kemungiknan diatas 65%.",
+      penyakit: "Tidak ada penyakit dengan kemungiknan diatas 65%",
       solusi: "Tidak terdeteksi, tetap jaga mata anda ya.",
       jawaban: req.session.jawabanUser,
       gejala: ["-"],

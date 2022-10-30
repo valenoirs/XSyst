@@ -97,7 +97,9 @@ router.get("/riwayat", async (req, res) => {
     req.flash("error", "Untuk melihat riwayat harap login terlebih dahulu");
     res.redirect("/login");
   } else {
-    const riwayatUser = await Riwayat.find({ idUser: req.session.idUser });
+    const riwayatUser = await Riwayat.find({ idUser: req.session.idUser }).sort(
+      { createdAt: -1 }
+    );
     res.render("user/riwayat", {
       layout: "layouts/user",
       title: "Riwayat",
