@@ -180,12 +180,8 @@ exports.diagnosa = async (req, res) => {
         highestPenyakitScore[0].persentase > 64 &&
         highestPenyakitScore.length === 8
       ) {
-        console.log(`Sakit = ${penyakit[key].nama}`);
         for (let keySolusi in solusi) {
-          console.log(solusi[keySolusi].penyakit);
           if (highestPenyakitScore[0].nama === solusi[keySolusi].penyakit) {
-            console.log(`Solusi = ${solusi[keySolusi].keterangan}`);
-
             const realPenyakit = await Penyakit.findOne(
               { nama: highestPenyakitScore[0].nama },
               { gejala: 1, pencegahan: 1 }
