@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
 
     await Code.deleteMany({ email: req.body.email });
 
-    console.log("User logged in!");
+    console.log(`${user.nama}: Logged in!`);
     return res.redirect("/");
   } catch (error) {
     console.error("login-error", error);
@@ -196,10 +196,9 @@ exports.diagnosa = async (req, res) => {
               const newRiwayat = new Riwayat(riwayat);
               await newRiwayat.save();
 
-              console.log("Riwayat baru");
+              console.log(`${req.session.namaUser}: Riwayat baru`);
             }
 
-            console.log(riwayat);
             return res.render("user/hasil", {
               layout: "layouts/user",
               title: "Hasil Diagnosa",
@@ -215,10 +214,9 @@ exports.diagnosa = async (req, res) => {
       const newRiwayat = new Riwayat(riwayat);
       await newRiwayat.save();
 
-      console.log("Riwayat baru");
+      console.log(`${req.session.namaUser}: Riwayat baru`);
     }
 
-    console.log(riwayat);
     return res.render("user/hasil", {
       layout: "layouts/user",
       title: "Hasil Diagnosa",
