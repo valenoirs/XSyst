@@ -23,7 +23,67 @@
         </tr>
         <tr>
           <th scope="row">Penyakit</th>
-          <td class="text-danger"><%= riwayat.penyakit %></td>
+          <td>
+            <h6>
+              <% if(riwayat.penyakit === "Rabun Jauh") { %>
+                <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.alodokter.com/rabun-jauh"
+                >Rabun Jauh</a
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+                <% } else if(riwayat.penyakit === "Rabun Dekat") { %>
+                  <a
+                  class="text-danger"
+                  target="_blank"
+                  href="https://www.halodoc.com/kesehatan/rabun-dekat"
+              >Rabun Dekat</a
+              > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+              <% } else if(riwayat.penyakit === "Silinder") { %>
+                <a
+                class="text-danger"
+                target="_blank"
+                href="https://hellosehat.com/mata/gangguan-penglihatan/mata-silinder/"
+              >Silinder</a
+            > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+            <% } else if(riwayat.penyakit === "Mata Tua") { %>
+            <a
+            class="text-danger"
+              target="_blank"
+              href="https://www.alodokter.com/presbiopi"
+              >Mata Tua</a
+              > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+              <% } else if(riwayat.penyakit === "Katarak") { %>
+                <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.halodoc.com/kesehatan/katarak"
+                >Katarak</a
+                > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+              <% } else if(riwayat.penyakit === "Glaukoma") { %>
+                <a
+                class="text-danger"
+                target="_blank"
+                href="https://www.alodokter.com/glaukoma"
+                >Glaukoma</a
+              > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+              <% } else if(riwayat.penyakit === "Ablasio") { %>
+              <a
+              class="text-danger"
+              target="_blank"
+              href="https://www.alodokter.com/ablasi-retina"
+                >Ablasio</a
+              > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+              <% } else if(riwayat.penyakit === "Konjungtivitis") { %>
+              <a
+              class="text-danger"
+              target="_blank"
+              href="https://www.halodoc.com/kesehatan/konjungtivitis"
+              >Konjungtivitis</a
+              > <span class="fs-6 fw-light fst-italic">*dipilih berdasarkan gejala terbanyak</span>
+              <% } else { %> <%= riwayat.penyakit %> <% } %>
+            </h6>
+          </td>
         </tr>
         <tr>
           <th scope="row">Solusi</th>
@@ -47,5 +107,6 @@
         </tr>
       </tbody>
     </table>
+    <span class="fs-6 fw-light fst-italic">*Tidak yakin dengan hasil atau jawaban anda, silahkan lakukan <a class="text-danger" href="/diagnosa">Diagnosa</a> lagi atau kunjungi <sapn class="text-danger">dokter</sapn> terdekat.</span>
   </div>
 </div>
