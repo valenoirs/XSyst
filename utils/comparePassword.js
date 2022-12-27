@@ -1,7 +1,7 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs')
 
 const comparePassword = (newPassword, oldPassword) => {
-    return bcrypt.compareSync(newPassword, oldPassword);
-};
+  return bcrypt.compareSync(newPassword, oldPassword)
+}
 
-module.exports = comparePassword;
+module.exports = comparePassword

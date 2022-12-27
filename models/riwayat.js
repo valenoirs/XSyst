@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const Riwayat = mongoose.model(
-  "Riwayat",
+  'Riwayat',
   new mongoose.Schema(
     {
       id: { type: String, required: true, unique: true },
@@ -17,6 +17,6 @@ const Riwayat = mongoose.model(
       timestamps: true,
     }
   )
-);
+)
 
-module.exports = Riwayat;
+module.exports = Riwayat
