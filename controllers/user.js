@@ -435,20 +435,20 @@ exports.pertanyaan = async (req, res) => {
       ['G13', 'Apakah anda sering mengganti ukuran kacamata?'],
       [
         'G14',
-        'Apakah nampak seperti pelangi yang melingkar saat anda melihat lampu atau sumber cahaya',
+        'Apakah anda melihat seperti ada pelangi yang melingkar disaat anda melihat lampu atau sumber cahaya?',
       ],
       [
         'G15',
         'Apakah radius penglihatan anda menyempit sehingga tidak dapat melihat objek sama sekali?',
       ],
-      ['G16', 'Apakah anda merasa mual atau ingin muntah?'],
+      ['G16', 'Apakah anda sering merasa mual atau ingin muntah?'],
       [
         'G17',
         'Apakah anda kehilangan fungsi penglihatan pada salah satu mata anda?',
       ],
       [
         'G18',
-        'Apakah nampak bentuk-bentuk tidak wajar yang melayang atau kilatan cahaya?',
+        'Apakah mata anda seperti melihat kilatan cahaya atau bentuk-bentuk tidak wajar yang melayang?',
       ],
       ['G19', 'Apakah mata anda terasa gatal dan berair?'],
       ['G20', 'Apakah mata anda peka terhadap cahaya nampak?'],

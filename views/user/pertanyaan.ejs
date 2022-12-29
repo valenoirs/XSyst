@@ -22,6 +22,17 @@
     <div class="row">
       <div class="col text-center">
         <h4 class="text-secondary"><%= pertanyaan %></h4>
+        <% if (gejala === "G15") { %>
+          <p>
+            (objek yang ada di sekitar anda mulai kabur sampai tidak kelihatan)
+          </p>
+        <% } else if(gejala === "G16") { %>
+          (pada saat menggunakan kaca mata atau pada saat membaca)
+        <% } else if(gejala === "G18") { %>
+          (seperti kilatan tersebut memiliki bentuk atau warna)
+        <% } else if(gejala === "G20") { %>
+          (pada kondisi tertentu apakah sering melihat cahaya-cahya yang menyilaukan mata secara langsung dan cepat)
+        <% } %>
       </div>
     </div>
     <div class="row justify-content-center text-center mt-3">
