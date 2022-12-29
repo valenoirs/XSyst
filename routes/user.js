@@ -52,6 +52,61 @@ router.get('/register', (req, res) => {
   }
 })
 
+router.get('/pengaturan', (req, res) => {
+  if (!req.session.idUser) return res.redirect('/login')
+  if (!req.session.isAdmin) return res.redirect('/404')
+
+  return res.render('user/pengaturan/index', {
+    layout: 'layouts/user',
+    title: 'Pengaturan',
+    error: req.flash('error'),
+  })
+})
+
+router.get('/pengaturan/penyakit', async (req, res) => {
+  if (!req.session.idUser) return res.redirect('/login')
+  if (!req.session.isAdmin) return res.redirect('/404')
+
+  const penyakit = await Penyakit.find()
+
+  return res.render('user/pengaturan/penyakit', {
+    layout: 'layouts/user',
+    title: 'Pengaturan',
+    penyakit,
+    error: req.flash('error'),
+  })
+})
+
+router.get('/pengaturan/gejala', async (req, res) => {
+  if (!req.session.idUser) return res.redirect('/login')
+  if (!req.session.isAdmin) return res.redirect('/404')
+
+  const gejala = await Gejala.find()
+
+  return res.render('user/pengaturan/gejala', {
+    layout: 'layouts/user',
+    title: 'Pengaturan',
+    gejala,
+    error: req.flash('error'),
+  })
+})
+
+router.get('/penyakit/:id', async (req, res) => {
+  if (!req.session.idUser) return res.redirect('/login')
+  if (!req.session.isAdmin) return res.redirect('/404')
+
+  const { id } = req.params
+
+  const penyakit = await Penyakit.findOne({ id })
+
+  return res.render('user/pengaturan/detail_penyakit', {
+    layout: 'layouts/user',
+    title: 'Pengaturan',
+    penyakit,
+    error: req.flash('error'),
+  })
+})
+
 router.get('/edit', async (req, res) => {
   if (!req.session.idUser) {
     res.redirect('/login')
@@ -97,9 +152,14 @@ router.get('/riwayat', async (req, res) => {
     req.flash('error', 'Untuk melihat riwayat harap login terlebih dahulu')
     res.redirect('/login')
   } else {
-    const riwayatUser = await Riwayat.find({ idUser: req.session.idUser }).sort(
-      { createdAt: -1 }
-    )
+    let riwayatUser
+    if (req.session.isAdmin) {
+      riwayatUser = await Riwayat.find().sort({ createdAt: -1 })
+    } else {
+      riwayatUser = await Riwayat.find({ idUser: req.session.idUser }).sort({
+        createdAt: -1,
+      })
+    }
     res.render('user/riwayat', {
       layout: 'layouts/user',
       title: 'Riwayat',
@@ -164,6 +224,13 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+router.get('/403', (req, res) => {
+  return res
+    .status(403)
+    .send(
+      '<h2 style="color: rgba(220, 53, 69, 0.9);margin-left: 30%; margin-top: 10rem;">403: Access Forbidden!</h2>'
+    )
+})
 // router.get('/verification', (req, res) => {
 //     if(!req.session.idUser){
 //         res.render('user/verification', {layout: 'layouts/user', title: 'Verification Code', error: req.flash('error')})

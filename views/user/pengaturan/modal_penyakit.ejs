@@ -1,0 +1,264 @@
+<!-- Edit Penyakit -->
+<div
+    class="modal fade"
+    id="editNamaPenyakit"
+    tabindex="-1"
+    aria-labelledby="editNamaPenyakit"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="editNamaPenyakit">Edit Penyakit</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form method="" action="">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nama" value="<%= penyakit.nama %>" required>
+                <div id="emailHelp" class="form-text">Yakin ingin mengubah <span class="text-danger">Nama</span> penyakit <span class="text-danger"><%= penyakit.nama %></span>?</div>
+            </div>
+            <input type="hidden" name="id" value="<%= penyakit.id %>">
+          </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-danger">Edit</button>
+              </div>
+          </form>
+      </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Rules Penyakit -->
+<% penyakit.rules.forEach(rules => { %>
+    <div
+        class="modal fade"
+        id="edit<%= rules %>"
+        tabindex="-1"
+        aria-labelledby="edit<%= rules %>"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger" id="edit<%= rules %>">Edit Penyakit</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/penyakit/rules?_method=put">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="rules" value="<%= rules %>" required>
+                    <div id="emailHelp" class="form-text">Yakin ingin mengubah rules <span class="text-danger"><%= rules %></span>?</div>
+                </div>
+                <input type="hidden" name="id" value="<%= penyakit.id %>">
+              </div>
+                  <div class="modal-footer">
+                    <input class="btn btn-outline-danger" type="submit" name="action" value="Hapus">
+                    <input class="btn btn-danger" type="submit" name="action" value="Edit">
+                  </div>
+              </form>
+          </div>
+          </div>
+        </div>
+    </div>
+<% }) %>
+
+<!-- Modal Gejala Penyakit -->
+<% penyakit.gejala.forEach((gejala, i) => { %>
+    <div
+        class="modal fade"
+        id="editGejala<%= i %>"
+        tabindex="-1"
+        aria-labelledby="edit<%= i %>"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger" id="edit<%= i %>">Edit Penyakit</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form method="" action="">
+                <div class="mb-3">
+                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="gejala" value="<%= gejala %>" required> -->
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" required><%= gejala %></textarea>
+                    <div id="emailHelp" class="form-text">Yakin ingin mengubah <span class="text-danger">Gejala <%= i + 1 %></span> penyakit <span class="text-danger"><%= penyakit.nama %></span>?</div>
+                </div>
+                <input type="hidden" name="id" value="<%= penyakit.id %>">
+              </div>
+                  <div class="modal-footer">
+                    <input class="btn btn-outline-danger" type="submit" name="action" value="Hapus">
+                    <input class="btn btn-danger" type="submit" name="action" value="Edit">
+                  </div>
+              </form>
+          </div>
+          </div>
+        </div>
+    </div>
+<% }) %>
+
+<!-- Modal Keterangan Penyakit -->
+<div
+    class="modal fade"
+    id="editKeterangan"
+    tabindex="-1"
+    aria-labelledby="editKeterangan"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-danger" id="editKeterangan">Edit Penyakit</h5>
+            <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            ></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/penyakit/keterangan?_method=put">
+                <div class="mb-3">
+                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="keterangan" value="<%= penyakit.keterangan %>" required> -->
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="keterangan" required><%= penyakit.keterangan %></textarea>
+                    <div id="emailHelp" class="form-text">Yakin ingin mengubah keterangan penyakit <span class="text-danger"><%= penyakit.nama %></span>?</div>
+                </div>
+                <input type="hidden" name="id" value="<%= penyakit.id %>">
+            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Edit</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Pencegahan Penyakit -->
+<% penyakit.pencegahan.forEach((pencegahan, i) => { %>
+    <div
+        class="modal fade"
+        id="editPencegahan<%= i %>"
+        tabindex="-1"
+        aria-labelledby="editPencegahan<%= i %>"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger" id="editPencegahan<%= i %>">Edit Penyakit</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/penyakit/pencegahan?_method=put">
+                <div class="mb-3">
+                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pencegahan" value="<%= pencegahan %>" required> -->
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="pencegahanNew" required><%= pencegahan %></textarea>
+                    <div id="emailHelp" class="form-text">Yakin ingin mengubah <span class="text-danger">Pencegahan <%= i + 1 %></span> penyakit <span class="text-danger"><%= penyakit.nama %></span>?</div>
+                </div>
+                <input type="hidden" name="pencegahan" value="<%= pencegahan %>">
+                <input type="hidden" name="id" value="<%= penyakit.id %>">
+              </div>
+                  <div class="modal-footer">
+                    <input class="btn btn-outline-danger" type="submit" name="action" value="Hapus">
+                    <input class="btn btn-danger" type="submit" name="action" value="Edit">
+                  </div>
+              </form>
+          </div>
+          </div>
+        </div>
+    </div>
+<% }) %>
+
+<!-- Tambah Rules Penyakit -->
+<div
+  class="modal fade"
+  id="tambahRules"
+  tabindex="-1"
+  aria-labelledby="tambahRules"
+  aria-hidden="true"
+  >
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="tambahRules">Tambah Rules</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/penyakit/rules">
+          <div class="mb-3">
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="rules"required>
+              <div id="emailHelp" class="form-text">Yakin ingin menambah rules?</div>
+          </div>
+          <input type="hidden" name="id" value="<%= penyakit.id %>">
+        </div>
+            <div class="modal-footer">
+              <input class="btn btn-danger" type="submit"  value="Tambah">
+            </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tambah Pencegahan Penyakit -->
+<div
+  class="modal fade"
+  id="tambahPencegahan"
+  tabindex="-1"
+  aria-labelledby="tambahPencegahan"
+  aria-hidden="true"
+  >
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="tambahPencegahan">Tambah Pencegahan</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/penyakit/pencegahan">
+          <div class="mb-3">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="pencegahan" required></textarea>
+              <div id="emailHelp" class="form-text">Yakin ingin menambah pencegahan?</div>
+          </div>
+          <input type="hidden" name="id" value="<%= penyakit.id %>">
+        </div>
+            <div class="modal-footer">
+              <input class="btn btn-danger" type="submit"  value="Tambah">
+            </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>

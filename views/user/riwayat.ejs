@@ -6,6 +6,9 @@
       <thead>
         <tr class="text-danger">
           <th scope="col" style="width: 1rem">No</th>
+          <% if (locals.isAdmin) { %>
+            <th scope="col" style="width: 5rem">Nama</th>
+          <% } %>
           <th scope="col" style="width: 5rem">Penyakit</th>
           <th scope="col" style="width: 5rem">Waktu</th>
           <th scope="col" style="width: 5rem">Detail</th>
@@ -15,6 +18,11 @@
         <% riwayat.forEach((e,i) => { %>
         <tr>
           <th scope="row"><%= i + 1 %></th>
+          <% if (locals.isAdmin) { %>
+            <td>
+              <%= e.username %>
+            </td>
+          <% } %>
           <td>
             <h6>
               <% if(e.penyakit === "Rabun Jauh") { %>

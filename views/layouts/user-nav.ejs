@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
   <div class="container-fluid ps-5 pe-5">
     <a class="navbar-brand" role="button"
-      ><img src="./icon_white.png" /> <span style="font-family: 'Courier New', Courier, monospace;">Eye-X-Sys</span></a
+      ><img src="/icon_white.png" /> <span style="font-family: 'Courier New', Courier, monospace;">Eye-X-Sys</span></a
     >
     <button
       class="navbar-toggler"
@@ -23,14 +23,21 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/diagnosa"
-            ><i class="bi bi-eyedropper"></i> Diagnosa</a
+          ><i class="bi bi-eyedropper"></i> Diagnosa</a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/riwayat"
-            ><i class="bi bi-hourglass-split"></i> Riwayat</a
+          ><i class="bi bi-hourglass-split"></i> Riwayat</a
           >
         </li>
+        <% if (locals.isAdmin) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/pengaturan"
+              ><i class="bi bi-gear-wide-connected"></i> Pengaturan</a
+            >
+          </li>
+        <% } %>
       </ul>
       <div class="d-flex">
         <% if (locals.idUser) { %>

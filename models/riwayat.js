@@ -12,6 +12,7 @@ const Riwayat = mongoose.model(
       solusi: { type: String, required: true },
       gejala: { type: Array, required: true, default: [] },
       pencegahan: { type: Array, required: true, default: [] },
+      username: { type: String, required: true },
     },
     {
       timestamps: true,

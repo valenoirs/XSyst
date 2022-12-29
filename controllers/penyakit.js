@@ -179,3 +179,82 @@ module.exports.penyakitAdd = async (req, res) => {
     console.log('Penyakit already in db')
   }
 }
+
+exports.updateRules = async (req, res) => {
+  console.log(req.body)
+
+  try {
+    // await Penyakit.updateOne({ id, pencegahan: '' })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.updateKeterangan = async (req, res) => {
+  const { id, keterangan } = req.body
+
+  try {
+    await Penyakit.updateOne({ id }, { $set: { keterangan } })
+
+    return res.redirect(`/penyakit/${id}`)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.updatePencegahan = async (req, res) => {
+  const { id, pencegahan, action, pencegahanNew } = req.body
+
+  try {
+    if (action === 'Edit') {
+      await Penyakit.updateOne(
+        { id, pencegahan },
+        { $set: { 'pencegahan.$': pencegahanNew } }
+      )
+
+      return res.redirect(`/penyakit/${id}`)
+    }
+
+    if (action === 'Hapus') {
+      await Penyakit.updateOne({ id }, { $pull: { pencegahan } })
+
+      return res.redirect(`/penyakit/${id}`)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.tambahRules = async (req, res) => {
+  console.log(req.body)
+
+  try {
+    // await Penyakit.updateOne({ id, pencegahan: '' })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.tambahKeterangan = async (req, res) => {
+  const { id, keterangan } = req.body
+
+  try {
+    await Penyakit.updateOne({ id }, { $set: { keterangan } })
+
+    return res.redirect(`/penyakit/${id}`)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.tambahPencegahan = async (req, res) => {
+  const { id, pencegahan } = req.body
+
+  try {
+    await Penyakit.updateOne({ id }, { $push: { pencegahan } })
+
+    return res.redirect(`/penyakit/${id}`)
+  } catch (error) {
+    console.log(error)
+  }
+}

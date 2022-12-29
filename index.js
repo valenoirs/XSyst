@@ -53,6 +53,7 @@ app.use((req, res, next) => {
     res.locals.idUser = req.session.idUser
     res.locals.namaUser = req.session.namaUser
     res.locals.emailUser = req.session.emailUser
+    res.locals.isAdmin = req.session.isAdmin
   }
 
   next()
@@ -81,6 +82,7 @@ mongoose
 
 // HTTP Routes
 app.use('/', require('./routes/user'))
+app.use('/penyakit', require('./routes/penyakit'))
 
 // Ping Server!
 app.get('/ping', (req, res, next) => {

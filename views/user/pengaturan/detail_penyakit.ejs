@@ -1,0 +1,107 @@
+<div class="container-fluid" style="padding: 55px 10% 5% 10%">
+  <div class="row">
+    <h3 class="text-danger mb-5">Detail Penyakit : <%= penyakit.nama %></h3>
+    <table class="table table-bordered border-danger">
+      <tbody>
+        <tr>
+          <th scope="row" style="width: 200px">Nama Penyakit</th>
+          <td class="text-danger"><%= penyakit.nama %> 
+            <!-- <a
+              class="text-decoration-none text-success"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#editNamaPenyakit"
+            >
+              <span class="text-warning"><i class="bi bi-pencil-square"></i></span>
+            </a> -->
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Rules</th>
+          <td>
+            <% penyakit.rules.forEach((rules) => { %>
+              <p>
+                - <%= rules %> 
+                <a
+                  class="text-decoration-none text-success"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#edit<%= rules %>"
+                >
+                  <span class="text-warning"><i class="bi bi-pencil-square"></i></span>
+                </a>
+              </p>
+            <% }) %>
+            <a
+                class="text-decoration-none text-success"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#tambahRules"
+              >
+                <p><i class="bi bi-plus-square-fill"></i> Tambah Rules</p>
+              </a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Gejala</th>
+          <td>
+              <% penyakit.gejala.forEach((gejala, i) => { %>
+                <p>
+                  <%= i + 1 %>. <%= gejala %>
+                  <!-- <a
+                    class="text-decoration-none text-success"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editGejala<%= i %>"
+                  >
+                    <span class="text-warning"><i class="bi bi-pencil-square"></i></span>
+                  </a> -->
+              </p>
+              <% }) %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Keterangan</th>
+          <td><%= penyakit.keterangan %> 
+            <a
+              class="text-decoration-none text-success"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#editKeterangan"
+            >
+              <span class="text-warning"><i class="bi bi-pencil-square"></i></span>
+            </a>
+        </td>
+        </tr>
+        <tr>
+          <th scope="row">Pencegahan</th>
+          <td>
+              <% penyakit.pencegahan.forEach((pencegahan, i) => { %>
+                <p><%= i + 1 %>. <%= pencegahan %>
+                  <a
+                    class="text-decoration-none text-success"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editPencegahan<%= i %>"
+                  >
+                    <span class="text-warning"><i class="bi bi-pencil-square"></i></span>
+                  </a>
+                </p>
+              <% }) %>
+              <a
+                class="text-decoration-none text-success"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#tambahPencegahan"
+              >
+                <p><i class="bi bi-plus-square-fill"></i> Tambah Pencegahan</p>
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <span class="fs-6 fw-light fst-italic">*Tidak yakin dengan hasil atau jawaban anda, silahkan lakukan <a class="text-danger" href="/diagnosa">Diagnosa</a> lagi atau kunjungi <sapn class="text-danger">dokter</sapn> terdekat.</span> -->
+  </div>
+</div>
+
+<%- include('modal_penyakit') %> 

@@ -1,0 +1,79 @@
+<div class="container-fluid" style="padding: 55px 10% 5% 10%">
+    <div class="row">
+      <h3 class="text-danger mb-3">Pengaturan Kode Gejala</h3>
+      <h6 class="text-secondary mb-4"><%= locals.namaUser %></h6>
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-danger">
+            <th scope="col" style="width: 1rem">No</th>
+            <th scope="col" style="width: 5rem">Kode</th>
+            <th scope="col" style="width: 5rem">Gejala</th>
+            <th scope="col" style="width: 5rem">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% gejala.forEach((element, i) => { %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= element.kode %></td>
+            <td><%= element.keterangan %></td>
+            <td>
+                <a
+                    class="text-decoration-none text-danger"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#edit<%= element.kode %>"
+                >
+                    <span><i class="bi bi-pencil-square"></i> Edit</span>
+                </a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <% gejala.forEach((element, i) => { %>
+    <div
+        class="modal fade"
+        id="edit<%= element.kode %>"
+        tabindex="-1"
+        aria-labelledby="edit<%= element.kode %>"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger" id="edit<%= element.kode %>">Edit Kode Gejala</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/product?_method=delete">
+                <div class="mb-3">
+                    <label class="text-danger mb-2" for="exampleInputEmail1" class="form-label">Kode</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="kode" value="<%= element.kode %>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-danger mb-2" for="exampleInputEmail1" class="form-label">Keterangan</label>
+                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="keterangan" value="<%= element.keterangan %>"> -->
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required><%= element.keterangan %></textarea>
+                </div>
+                <div id="emailHelp" class="form-text">Yakin ingin mengubah kode gejala <span class="text-danger"><%= element.kode %></span>?</div>
+                <input type="hidden" name="id" value="<%= element.id %>">
+              </div>
+                  <div class="modal-footer">
+                    <input class="btn btn-outline-danger" type="submit" name="action" value="Hapus">
+                    <input class="btn btn-danger" type="submit" name="action" value="Edit">
+                  </div>
+              </form>
+          </div>
+          </div>
+        </div>
+    </div>
+<% }) %>

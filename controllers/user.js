@@ -16,6 +16,7 @@ module.exports.logout = async (req, res) => {
   try {
     delete req.session.idUser
     delete req.session.namaUser
+    delete req.session.isAdmin
 
     console.log('User logged out')
     return res.redirect('/')
@@ -50,6 +51,10 @@ exports.login = async (req, res) => {
     req.session.idUser = user.id
     req.session.namaUser = user.nama
     req.session.emailUser = user.email
+
+    if (user.isAdmin) {
+      req.session.isAdmin = user.isAdmin
+    }
 
     await Code.deleteMany({ email: req.body.email })
 
@@ -146,6 +151,7 @@ exports.diagnosa = async (req, res) => {
       gejala: ['-'],
       pencegahan: ['-'],
       persentase: [],
+      username: req.session.namaUser,
     }
 
     for (let key in penyakit) {
