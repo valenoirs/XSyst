@@ -171,21 +171,19 @@
       <%- include('user-nav') %>
     </header>
   
-    <main style="padding-bottom: 15rem;">
+    <main style="padding-bottom: 5rem;">
       <div class="container" style="padding-top: 3.5rem;">
       </div>
       
       <!-- Error Container -->
-      <div class="containter">
-        <% if (error.length > 0) { %>
-          <div class="row" style="padding: 5% 10% 0px 10%;" data-aos="fade-down" data-aos-duration="750">
-            <div class="alert alert-danger alert-dismissible fade show">
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                <i class="bi bi-exclamation-triangle-fill"></i> <%= error %>
-            </div>
+      <% if (error.length > 0) { %>
+        <div class="container" data-aos="fade-down" data-aos-duration="750">
+          <div class="alert alert-danger alert-dismissible fade show mt-5">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <i class="bi bi-exclamation-triangle-fill"></i> <%= error %>
           </div>
-        <% } %>
-      </div>
+        </div>
+      <% } %>
       
       <!-- Main Content -->
         <%- body %> 
