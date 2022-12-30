@@ -147,25 +147,41 @@ router.get('/pertanyaan', (req, res) => {
   })
 })
 
-router.get('/riwayat', async (req, res) => {
+router.get('/riwayat/:page', async (req, res) => {
   if (!req.session.idUser) {
     req.flash('error', 'Untuk melihat riwayat harap login terlebih dahulu')
-    res.redirect('/login')
+    return res.redirect('/login')
   } else {
-    let riwayatUser
-    if (req.session.isAdmin) {
-      riwayatUser = await Riwayat.find().sort({ createdAt: -1 })
-    } else {
-      riwayatUser = await Riwayat.find({ idUser: req.session.idUser }).sort({
-        createdAt: -1,
-      })
+    const perPage = 10
+    const currentPage = req.params.page || 1
+    const skip = perPage * currentPage - perPage
+
+    const render = async (query) => {
+      const documentCount = await Riwayat.find(query).count()
+
+      Riwayat.find(query)
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(perPage)
+        .exec((err, riwayat) => {
+          console.log(documentCount)
+          return res.render('user/riwayat', {
+            layout: 'layouts/user',
+            title: 'Riwayat',
+            riwayat,
+            currentPage,
+            skip,
+            pages: Math.ceil(documentCount / perPage),
+            error: req.flash('error'),
+          })
+        })
     }
-    res.render('user/riwayat', {
-      layout: 'layouts/user',
-      title: 'Riwayat',
-      riwayat: riwayatUser,
-      error: req.flash('error'),
-    })
+
+    if (req.session.isAdmin) {
+      return render({})
+    } else {
+      return render({ idUser: req.session.idUser })
+    }
   }
 })
 

@@ -17,7 +17,7 @@
       <tbody>
         <% riwayat.forEach((e,i) => { %>
         <tr>
-          <th scope="row"><%= i + 1 %></th>
+          <th scope="row"><%= i + skip + 1 %></th>
           <% if (locals.isAdmin) { %>
             <td>
               <%= e.username %>
@@ -106,4 +106,84 @@
       </tbody>
     </table>
   </div>
+  
+  <!-- Pagination -->
+  <!-- <% if (pages > 0) { %>
+    <div class="row mt-5">
+      <div class="col">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <% if (currentPage === '1') { %>
+              <li class="page-item disabled"><a class="page-link" href="#">Pertama</a></li>
+            <% } else { %>
+              <li class="page-item"><a class="page-link" href="/riwayat/1">Pertama</a></li>
+            <% } %>
+
+            <% let i = Number(currentPage) > 2 ? Number(currentPage) - 1 : 1 %>
+  
+            <% if (i !== 1) { %>
+              <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            <% } %>
+
+            <% for( ; i <= (Number(currentPage) + 2) && i <= pages; i++ ) { %>
+              <% if (i === Number(currentPage)) { %>
+                <li class="page-item active"><a class="page-link" href="/riwayat/<%= i %>"><%= i %></a></li>
+              <% } else {%>
+                <li class="page-item"><a class="page-link" href="/riwayat/<%= i %>"><%= i %></a></li>
+              <% } %>
+            <% } %>
+
+            <% if (i === (Number(currentPage) + 1) && i < pages) { %>
+              <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            <% } %>
+
+            <% if (Number(currentPage) === pages) { %>
+              <li class="page-item disabled"><a class="page-link" href="#">Terakhir</a></li>
+            <% } else { %>
+              <li class="page-item"><a class="page-link" href="/riwayat/<%= pages %>">Terakhir</a></li>
+            <% } %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  <% } %> -->
+
+  <% if (pages > 0) { %>
+    <div class="row mt-5">
+      <div class="col">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <% if (currentPage === '1') { %>
+              <li class="page-item disabled"><a class="page-link" href="#">Pertama</a></li>
+            <% } else { %>
+              <li class="page-item"><a class="page-link" href="/riwayat/1">Pertama</a></li>
+            <% } %>
+
+            <% if (Number(currentPage) > 2) { %>
+              <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            <% } %>
+
+            <% if (Number(currentPage) !== 1) { %>
+              <li class="page-item"><a class="page-link" href="/riwayat/<%= currentPage - 1 %>"><%= currentPage - 1 %></a></li>
+            <% } %>
+            <li class="page-item active"><a class="page-link" href="/riwayat/<%= currentPage %>"><%= currentPage %></a></li>
+            
+            <% if (Number(currentPage) !== pages) { %>
+              <li class="page-item"><a class="page-link" href="/riwayat/<%= Number(currentPage) + 1 %>"><%= Number(currentPage) + 1 %></a></li>
+            <% } %>
+
+            <% if ((Number(currentPage) + 1) < pages) { %>
+              <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+            <% } %>
+
+            <% if (Number(currentPage) === pages) { %>
+              <li class="page-item disabled"><a class="page-link" href="#">Terakhir</a></li>
+            <% } else { %>
+              <li class="page-item"><a class="page-link" href="/riwayat/<%= pages %>">Terakhir</a></li>
+            <% } %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  <% } %>
 </div>

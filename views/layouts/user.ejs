@@ -129,6 +129,39 @@
       border-color: #92aad0;
       background-color: #92aad0;
     }
+
+    .pagination > li > a
+{
+    color: rgba(220, 53, 69, 0.9);
+}
+
+    .pagination > li > a:focus,
+    .pagination > li > a:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:hover
+    {
+      color: #dc3545;
+      border-color: #ffc0cb;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #ff707e80;
+      background-color: #fffafa;
+    }
+
+    .pagination > .active > a
+    {
+      background-color: #dc3545 !Important;
+      border: solid 1px #dc3545 !Important;
+    }
+
+    .pagination > .active > a:hover
+    {
+      background-color: #dc3545 !Important;
+      border: solid 1px #dc3545;
+    }
+
+    .pagination:focus {
+      border-color: #ffc0cb;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px #ff707e80;
+    }
     </style>
 
     <title><%= title %></title>
