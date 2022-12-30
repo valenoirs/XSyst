@@ -52,6 +52,43 @@ router.get('/register', (req, res) => {
   }
 })
 
+router.get('/riwayat/:page', async (req, res) => {
+  if (!req.session.idUser) {
+    req.flash('error', 'Untuk melihat riwayat harap login terlebih dahulu')
+    return res.redirect('/login')
+  } else {
+    const perPage = 10
+    const currentPage = req.params.page || 1
+    const skip = perPage * currentPage - perPage
+
+    const render = async (query) => {
+      const documentCount = await Riwayat.find(query).count()
+
+      Riwayat.find(query)
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(perPage)
+        .exec((err, riwayat) => {
+          return res.render('user/riwayat', {
+            layout: 'layouts/user',
+            title: 'Riwayat',
+            riwayat,
+            currentPage,
+            skip,
+            pages: Math.ceil(documentCount / perPage),
+            error: req.flash('error'),
+          })
+        })
+    }
+
+    if (req.session.isAdmin) {
+      return render({})
+    } else {
+      return render({ idUser: req.session.idUser })
+    }
+  }
+})
+
 router.get('/pengaturan', (req, res) => {
   if (!req.session.idUser) return res.redirect('/login')
   if (!req.session.isAdmin) return res.redirect('/404')
@@ -145,44 +182,6 @@ router.get('/pertanyaan', (req, res) => {
     gejala: req.session.gejala,
     error: req.flash('error'),
   })
-})
-
-router.get('/riwayat/:page', async (req, res) => {
-  if (!req.session.idUser) {
-    req.flash('error', 'Untuk melihat riwayat harap login terlebih dahulu')
-    return res.redirect('/login')
-  } else {
-    const perPage = 10
-    const currentPage = req.params.page || 1
-    const skip = perPage * currentPage - perPage
-
-    const render = async (query) => {
-      const documentCount = await Riwayat.find(query).count()
-
-      Riwayat.find(query)
-        .sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(perPage)
-        .exec((err, riwayat) => {
-          console.log(documentCount)
-          return res.render('user/riwayat', {
-            layout: 'layouts/user',
-            title: 'Riwayat',
-            riwayat,
-            currentPage,
-            skip,
-            pages: Math.ceil(documentCount / perPage),
-            error: req.flash('error'),
-          })
-        })
-    }
-
-    if (req.session.isAdmin) {
-      return render({})
-    } else {
-      return render({ idUser: req.session.idUser })
-    }
-  }
 })
 
 router.get('/informasi', (req, res) => {
